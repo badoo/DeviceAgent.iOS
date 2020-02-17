@@ -51,6 +51,7 @@
 		3B5444EA249838AC00532AE0 /* QuerySpecifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5444E02498216000532AE0 /* QuerySpecifierTests.m */; };
 		3B81F695240E952F00825603 /* QuerySpecifierByDescendantType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81F694240E952F00825603 /* QuerySpecifierByDescendantType.m */; };
 		3B81F696240E952F00825603 /* QuerySpecifierByDescendantType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81F694240E952F00825603 /* QuerySpecifierByDescendantType.m */; };
+		3BE0245123F2E66D0052DD40 /* QuerySpecifierByPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE0245023F2E66D0052DD40 /* QuerySpecifierByPredicate.m */; };
 		3BE3ED1E2498CF0700830B19 /* XCTest+CBXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F547174F20496A200024AA0B /* XCTest+CBXAdditions.m */; };
 		4107F8FE231D7298003961AF /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4107F8FC231D7262003961AF /* Resources.xcassets */; };
 		41188FEA22E9958D0012886A /* XCWebViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 4166C9AE22E7009800C8BEBF /* XCWebViews.m */; };
@@ -943,6 +944,8 @@
 		3B5444E02498216000532AE0 /* QuerySpecifierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierTests.m; sourceTree = "<group>"; };
 		3B81F693240E937F00825603 /* QuerySpecifierByDescendantType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuerySpecifierByDescendantType.h; sourceTree = "<group>"; };
 		3B81F694240E952F00825603 /* QuerySpecifierByDescendantType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierByDescendantType.m; sourceTree = "<group>"; };
+		3BE0244F23F2E5810052DD40 /* QuerySpecifierByPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuerySpecifierByPredicate.h; sourceTree = "<group>"; };
+		3BE0245023F2E66D0052DD40 /* QuerySpecifierByPredicate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierByPredicate.m; sourceTree = "<group>"; };
 		4107F8FC231D7262003961AF /* Resources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources.xcassets; sourceTree = "<group>"; };
 		4166C9AE22E7009800C8BEBF /* XCWebViews.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XCWebViews.m; sourceTree = "<group>"; };
 		634244EC948D56732C2565E5 /* SpringBoardAlerts.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = SpringBoardAlerts.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; };
@@ -2579,6 +2582,8 @@
 				3B81F694240E952F00825603 /* QuerySpecifierByDescendantType.m */,
 				89B9519F1CF5B297007FD0AB /* QuerySpecifierByType.h */,
 				89B951A01CF5B297007FD0AB /* QuerySpecifierByType.m */,
+				3BE0244F23F2E5810052DD40 /* QuerySpecifierByPredicate.h */,
+				3BE0245023F2E66D0052DD40 /* QuerySpecifierByPredicate.m */,
 				F536799F1D7C324E009956D0 /* QuerySpecifierByMark.h */,
 				F53679A01D7C324E009956D0 /* QuerySpecifierByMark.m */,
 			);
@@ -3930,6 +3935,7 @@
 				899696D41CB44D9B00BB42E2 /* GestureConfiguration.m in Sources */,
 				899696EB1CB5857C00BB42E2 /* JSONKeyValidator.m in Sources */,
 				F55F81981C6DD07500A945C8 /* MultipartMessageHeader.m in Sources */,
+				3BE0245123F2E66D0052DD40 /* QuerySpecifierByPredicate.m in Sources */,
 				F5538B8B1E28BEB9003EC5F3 /* CBXLogging.m in Sources */,
 				899697061CB5D5CF00BB42E2 /* Gesture+Options.m in Sources */,
 				89C5F35F1C9C51680093A018 /* Query.m in Sources */,
