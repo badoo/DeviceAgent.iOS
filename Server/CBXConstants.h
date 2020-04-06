@@ -8,6 +8,13 @@
 static const NSUInteger ddLogLevel = DDLogLevelDebug;
 
 static NSUInteger const CBX_DEFAULT_SERVER_PORT = 27753;
+static NSUInteger const CBX_DEFAULT_MJPEG_PORT = 27754;
+
+static NSUInteger FBMjpegServerScreenshotQuality = 100;
+static NSUInteger FBMjpegServerFramerate = 4;
+static NSUInteger FBScreenshotQuality = 1;  
+static NSUInteger FBMjpegScalingFactor = 50;
+
 static NSString *const CBXWebServerErrorDomain = @"sh.calaba.xcuitest-server";
 static NSString *const CBX_BUNDLE_ID_KEY = @"bundleID";
 static NSString *const CBX_LAUNCH_ARGS_KEY = @"launchArgs";
