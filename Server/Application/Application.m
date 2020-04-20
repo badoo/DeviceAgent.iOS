@@ -191,6 +191,15 @@ static Application *currentApplication;
 
 + (NSDictionary *)tree {
     XCUIApplication *application = [Application currentApplication];
+
+    XCUIElementQuery *applicationQuery = [XCUIApplication cbxQuery:application];
+    XCElementSnapshot *applicationSnaphot = [applicationQuery cbx_elementSnapshotForDebugDescription];
+    return [Application snapshotTree:applicationSnaphot];
+}
+
++ (NSDictionary *)tree:(NSString *_Nullable)bundleId {
+    XCUIApplication *application = [[XCUIApplication alloc] initWithBundleIdentifier:bundleId];
+
     XCUIElementQuery *applicationQuery = [XCUIApplication cbxQuery:application];
     XCElementSnapshot *applicationSnaphot = [applicationQuery cbx_elementSnapshotForDebugDescription];
     return [Application snapshotTree:applicationSnaphot];
