@@ -62,6 +62,36 @@
           [response respondWithJSON:@{@"result" : results}];
       }],
 
+      [CBXRoute post:endpoint(@"/query_all", 1.0) withBlock:^(RouteRequest *request,
+                                                          NSDictionary *body,
+                                                          RouteResponse *response) {
+          // [[SpringBoard application] handleAlertsOrThrow];
+          QueryConfiguration *config;
+          config = [QueryConfigurationFactory configWithJSON:body
+                                                   validator:[Query validator]];
+          Query *query = [QueryFactory queryWithQueryConfiguration:config];
+
+          NSArray* bundleIds = [request.params[CBX_BUNDLE_ID_KEY] componentsSeparatedByString:@","];
+          NSArray <XCUIElement *> *elements= nil;
+          NSMutableArray *finalResults = [[NSMutableArray alloc] initWithCapacity:bundleIds.count];;
+
+          for (NSString *bundleId in bundleIds) {
+              elements = [query execute: bundleId];
+
+              /*
+               Format and return the results
+               */
+              NSMutableArray *results = [NSMutableArray arrayWithCapacity:elements.count];
+              for (XCUIElement *el in elements) {
+                  NSDictionary *json = [JSONUtils snapshotOrElementToJSON:el];
+                  [results addObject:json];
+              }
+              [finalResults addObject:results];
+          }
+
+          [response respondWithJSON:@{@"result" : finalResults}];
+      }],
+
       [CBXRoute get:endpoint(@"/springboard-alert", 1.0) withBlock:^(RouteRequest *request,
                                                                      NSDictionary *data,
                                                                      RouteResponse *response) {

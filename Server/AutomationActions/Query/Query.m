@@ -58,6 +58,27 @@
     //}
 }
 
+- (NSArray<XCUIElement *> *)execute:(NSString *_Nullable)bundleId {
+    if (self.queryConfiguration.selectors.count == 0) {
+        @throw [CBXException withMessage:@"Query must have at least one "
+                "specifier"];
+    }
+
+    XCUIApplication *application = [[XCUIApplication alloc] initWithBundleIdentifier:bundleId];
+    if (application.state != XCUIApplicationStateNotRunning) {
+        XCUIElementQuery *query = [application cbxQueryForDescendantsOfAnyType];
+
+        for (QuerySpecifier *specifier in self.queryConfiguration.selectors) {
+            query = [specifier applyToQuery:query];
+        }
+
+        return [query allElementsBoundByIndex];
+    } else {
+       return [[NSArray alloc] init];
+    }
+}
+
+
 - (NSDictionary *)toDict {
     return self.queryConfiguration.raw;
 }

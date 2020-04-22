@@ -60,6 +60,7 @@ Convenience constructor.
  @return a list of XCUIElement that matches all specifiers in the queryConfig
  */
 - (NSArray <XCUIElement *> *)execute;
+- (NSArray <XCUIElement *> *)execute:(NSString *_Nullable)bundleId;
 
 /*
     Debug description
