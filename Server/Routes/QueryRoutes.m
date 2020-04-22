@@ -13,8 +13,33 @@
 #import "CBXMacros.h"
 #import "CBXRoute.h"
 #import "CBXException.h"
+#import "Testmanagerd.h"
 
 @implementation QueryRoutes
+static NSDictionary<NSString *, NSNumber *> *parametersForFastElementSnapshot;
+static NSArray *axAttributes;
+
++ (void)initialize
+{
+  parametersForFastElementSnapshot = @{
+    @"maxArrayCount": @INT_MAX,
+    @"maxChildren": @INT_MAX,
+    @"maxDepth": @(1),
+    @"traverseFromParentsToChildren": @(1)
+  };
+
+  NSArray<NSString *> *propertyNames = @[
+    @"identifier",
+    @"value",
+    @"label",
+    @"elementType",
+    @"frame",
+  ];
+  NSSet *attributes = [[XCElementSnapshot class] axAttributesForElementSnapshotKeyPaths:propertyNames
+                                                                                isMacOS:NO];
+  axAttributes = [attributes allObjects];
+}
+
 + (NSArray <CBXRoute *> *)getRoutes {
     return
     @[
@@ -139,8 +164,69 @@
                                                                  NSDictionary *data,
                                                                  RouteResponse *response) {
           [response respondWithJSON:@{ @"types": [JSONUtils elementTypes] }];
+      }],
+
+
+      [CBXRoute get:endpoint(@"/element-at-coords", 1.0) withBlock:^(RouteRequest *request,
+                                                                 NSDictionary *data,
+                                                                 RouteResponse *response) {
+          CGFloat x = [[request param:@"x"] floatValue];
+          CGFloat y = [[request param:@"y"] floatValue];
+          CGPoint screenPoint = CGPointMake(x, y);
+          __block XCAccessibilityElement *elementAtPoint;
+          __block NSError *elementRequestError;
+          dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+          [[Testmanagerd get] _XCT_requestElementAtPoint:screenPoint
+                                      reply:^(XCAccessibilityElement *element, NSError *error) {
+                                        if (error == nil) {
+                                          elementAtPoint = element;
+                                        } else {
+                                          elementRequestError = error;
+                                        }
+                                        dispatch_semaphore_signal(sem);
+                                      }];
+          dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0 * NSEC_PER_SEC)));
+
+          if (elementRequestError != nil) {
+              @throw [CBXException withFormat:@"Error getting element at coords:\n%@",
+                      [elementRequestError localizedDescription]];
+          }
+
+          XCElementSnapshot *snap = [self fastElementSnapshot:elementAtPoint];
+          NSDictionary *result = @{
+            @"type":  [NSString stringWithFormat:@"%@", [JSONUtils stringForElementType:snap.elementType]],
+            @"value": [NSString stringWithFormat:@"%@", snap.value],
+            @"label": [NSString stringWithFormat:@"%@", snap.label],
+            @"frame": NSStringFromCGRect(snap.frame)
+          };
+
+          [response respondWithJSON:@{@"result": result}];
       }]
       ];
+}
+
++(XCElementSnapshot *)fastElementSnapshot:(XCAccessibilityElement *)element
+{
+  __block XCElementSnapshot *snapshotWithAttributes = nil;
+  __block NSError *innerError = nil;
+  dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+
+  [[Testmanagerd get] _XCT_requestSnapshotForElement:element
+                             attributes:axAttributes
+                             parameters:parametersForFastElementSnapshot
+                                  reply:^(XCElementSnapshot *snapshot, NSError *error) {
+                                    if (nil == error) {
+                                      snapshotWithAttributes = snapshot;
+                                    } else {
+                                      innerError = error;
+                                      NSLog(@"ERROR while getting _XCT_requestSnapshotForElement: %@", error);
+                                    }
+                                    dispatch_semaphore_signal(sem);
+                                  }];
+
+    dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0 * NSEC_PER_SEC)));
+
+  return snapshotWithAttributes;
 }
 
 @end
