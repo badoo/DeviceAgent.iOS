@@ -12,6 +12,7 @@
 #import "JSONUtils.h"
 #import "Gesture+Options.h"
 #import "Application.h"
+#import "GestureConfiguration.h"
 
 @interface ClearText ()
 
@@ -37,7 +38,7 @@
 }
 
 + (NSString *)name { return @"clear_text"; }
-+ (NSArray <NSString *> *)optionalKeys { return @[]; }
++ (NSArray <NSString *> *)optionalKeys { return @[CBX_TYPE_KEY]; }
 + (NSArray <NSString *> *)requiredKeys { return @[]; }
 
 + (Gesture *)executeWithGestureConfiguration:(GestureConfiguration *)gestureConfig
@@ -64,11 +65,13 @@
         return nil;
     }
 
-    XCUIElement *deleteKey = [[ClearText shared] deleteKey];
-
+    NSString *type = gestureConfig[CBX_TYPE_KEY];
     NSError *error = nil;
     BOOL success = NO;
-    if (deleteKey && deleteKey.exists) {
+
+    if ([type isEqualToString:@"delete"]) {
+        XCUIElement *deleteKey = [[ClearText shared] deleteKey];
+         NSAssert(deleteKey && deleteKey.exists, @"Delete key should be visible");
         success = [ClearText tapDeleteKeyToDeleteString:string
                                               deleteKey:deleteKey
                                                   error:&error];
