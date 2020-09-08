@@ -12,6 +12,67 @@
 #import "CBXRoute.h"
 #import "FBTCPSocket.h"
 #import "FBMjpegServer.h"
+#import "XCAXClient_iOS.h"
+#import <objc/runtime.h>
+static NSMutableDictionary *FBSnapshotRequestParameters;
+
+@implementation XCAXClient_iOS (DeviceAgent)
+
++ (NSDictionary *)snapshotRequestParameters
+{
+    NSLog(@"DA_DEBUG: Returning snapshot params %@", FBSnapshotRequestParameters);
+
+  return FBSnapshotRequestParameters;
+}
+
+/**
+ Parameters for traversing elements tree from parents to children while requesting XCElementSnapshot.
+ @return dictionary with parameters for element's snapshot request
+ */
++ (void)load
+{
+
+    NSLog(@"DA_DEBUG: Loading class XCAXClient_iOS (DeviceAgent)");
+
+    static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+      FBSnapshotRequestParameters = [NSMutableDictionary dictionaryWithDictionary:@{
+        @"maxArrayCount": @INT_MAX,
+        @"maxChildren": @INT_MAX,
+        @"maxDepth": @50, // 50 should be enough for the majority of the cases. The performance is acceptable for values up to 100.
+        @"traverseFromParentsToChildren": @1
+      }];
+
+      Class class = [self class];
+
+      SEL originalSelector = @selector(defaultParameters);
+      SEL swizzledSelector = @selector(snapshotRequestParameters);
+
+      Method originalMethod = class_getInstanceMethod(class, originalSelector);
+      Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+
+      BOOL didAddMethod =
+          class_addMethod(class,
+              originalSelector,
+              method_getImplementation(swizzledMethod),
+              method_getTypeEncoding(swizzledMethod));
+
+      if (didAddMethod) {
+          class_replaceMethod(class,
+              swizzledSelector,
+              method_getImplementation(originalMethod),
+              method_getTypeEncoding(originalMethod));
+      } else {
+          method_exchangeImplementations(originalMethod, swizzledMethod);
+      }
+
+      NSLog(@"DA_DEBUG: Loaded class XCAXClient_iOS (DeviceAgent)");
+
+  });
+}
+
+@end
+
 
 @interface CBXCUITestServer ()
 @property (atomic, strong) RoutingHTTPServer *server;
