@@ -97,17 +97,8 @@ static Application *currentApplication;
 
 + (XCUIApplicationState)terminateApplication:(XCUIApplication *)application {
     NSTimeInterval startTime = [[CBXMachClock sharedClock] absoluteTime];
-    if (application.state == XCUIApplicationStateNotRunning) {
-        DDLogDebug(@"Application %@ is not running", application.bundleID);
-        return XCUIApplicationStateNotRunning;
-    }
-
     [application terminate];
-
-    [CBXWaiter waitWithTimeout:10
-                     untilTrue:^BOOL{
-                         return application.state == XCUIApplicationStateNotRunning;
-                     }];
+    [application waitForState:XCUIApplicationStateNotRunning timeout:10.0];
     NSTimeInterval elapsed = [[CBXMachClock sharedClock] absoluteTime] - startTime;
 
     if (application.state != XCUIApplicationStateNotRunning) {
