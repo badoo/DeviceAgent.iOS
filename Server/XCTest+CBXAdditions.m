@@ -46,65 +46,6 @@
     return query;
 }
 
-+ (void)cbxResolveApplication:(XCUIApplication *_Nonnull)xcuiApplication {
-    id applicationQuery = [XCUIApplication cbxQuery:xcuiApplication];
-    [XCUIApplication cbxResolveApplication:xcuiApplication
-                          applicationQuery:applicationQuery];
-}
-
-+ (void)cbxResolveApplication:(XCUIApplication *_Nonnull)xcuiApplication
-             applicationQuery:(XCApplicationQuery *_Nonnull)applicationQuery {
-
-    Class klass = NSClassFromString(@"XCApplicationQuery");
-    SEL selector = NSSelectorFromString(@"elementBoundByIndex:");
-
-    NSMethodSignature *signature;
-    signature = [klass instanceMethodSignatureForSelector:selector];
-    NSInvocation *invocation;
-
-    invocation = [NSInvocation invocationWithMethodSignature:signature];
-    invocation.target = applicationQuery;
-    invocation.selector = selector;
-    NSUInteger index = 0;
-    [invocation setArgument:&index atIndex:2];
-
-    XCUIElement *element = nil;
-    void *buffer = nil;
-    [invocation invoke];
-    [invocation getReturnValue:&buffer];
-    element = (__bridge XCUIElement *)buffer;
-
-    [element cbx_resolve];
-}
-
-- (XCUIElementQuery *_Nonnull)cbxQueryForDescendantsOfAnyType {
-    id applicationQuery = [XCUIApplication cbxQuery:self];
-
-    [XCUIApplication cbxResolveApplication:self
-                          applicationQuery:applicationQuery];
-
-    Class klass = NSClassFromString(@"XCApplicationQuery");
-    SEL selector = NSSelectorFromString(@"descendantsMatchingType:");
-
-    NSMethodSignature *signature;
-    signature = [klass instanceMethodSignatureForSelector:selector];
-    NSInvocation *invocation;
-
-    invocation = [NSInvocation invocationWithMethodSignature:signature];
-    invocation.target = applicationQuery;
-    invocation.selector = selector;
-
-    XCUIElementType elementType = XCUIElementTypeAny;
-    [invocation setArgument:&elementType atIndex:2];
-
-    XCUIElementQuery *query = nil;
-    void *buffer = nil;
-    [invocation invoke];
-    [invocation getReturnValue:&buffer];
-    query = (__bridge XCUIElementQuery *)buffer;
-    return query;
-}
-
 @end
 
 @implementation XCUIElement (CBXAdditions)
@@ -124,14 +65,25 @@
 @implementation XCUIElementQuery (CBXAdditions)
 
 - (XCElementSnapshot *)cbx_elementSnapshotForDebugDescription {
-  if ([self respondsToSelector:@selector(elementSnapshotForDebugDescription)]) {
-    return [self elementSnapshotForDebugDescription];
-  }
-  if ([self respondsToSelector:@selector(elementSnapshotForDebugDescriptionWithNoMatchesMessage:)]) {
-    return [self elementSnapshotForDebugDescriptionWithNoMatchesMessage:nil];
-  }
-  @throw [CBXException withFormat:@"Cannot retrieve element snapshot"];
-  return nil;
+    DDLogError(@"DA_DEBUG: cbx_elementSnapshotForDebugDescription");
+    NSDate *methodStart = [NSDate date];
+
+    XCElementSnapshot *snapshot = nil;
+
+    if ([self respondsToSelector:@selector(elementSnapshotForDebugDescription)]) {
+        DDLogError(@"DA_DEBUG: elementSnapshotForDebugDescription");
+        snapshot = [self elementSnapshotForDebugDescription];
+    } else if ([self respondsToSelector:@selector(elementSnapshotForDebugDescriptionWithNoMatchesMessage:)]) {
+        DDLogError(@"DA_DEBUG: elementSnapshotForDebugDescriptionWithNoMatchesMessage");
+        snapshot = [self elementSnapshotForDebugDescriptionWithNoMatchesMessage:nil];
+    } else {
+        @throw [CBXException withFormat:@"Cannot retrieve element snapshot"];
+    }
+
+    DDLogError(@"DA_DEBUG: DID cbx_elementSnapshotForDebugDescription. Execution time: %f",
+               [[NSDate date] timeIntervalSinceDate:methodStart]);
+
+    return snapshot;
 }
 
 @end

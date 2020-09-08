@@ -56,7 +56,6 @@
 
 - (XCUIElementQuery *_Nonnull)cbxQueryForDescendantsOfAnyType;
 - (XCElementSnapshot *_Nullable)cbxXCElementSnapshot;
-+ (void)cbxResolveApplication:(XCUIApplication *_Nonnull)xcuiApplication;
 
 @end
 
