@@ -43,7 +43,18 @@
     }
 
     XCUIApplication *application = [Application currentApplication];
-    XCUIElementQuery *query = [application cbxQueryForDescendantsOfAnyType];
+
+    if (application.processID == 0 || application.state != XCUIApplicationStateRunningForeground) {
+        @throw [CBXException withMessage:@"Current application is NOT running. Cannot "
+                "perform queries until POST /session route is called"];
+    }
+
+    DDLogError(@"DA_DEBUG: Seaching for elements of current application of type any");
+    NSDate *methodStart = [NSDate date];
+    XCUIElementQuery *query = [application descendantsMatchingType:0];
+    NSDate *methodFinish = [NSDate date];
+    DDLogError(@"DA_DEBUG: DID Seach for elements of current application of type any. Execution time: %f",
+               [methodFinish timeIntervalSinceDate:methodStart]);
 
     for (QuerySpecifier *specifier in self.queryConfiguration.selectors) {
         query = [specifier applyToQuery:query];
@@ -65,17 +76,28 @@
     }
 
     XCUIApplication *application = [[XCUIApplication alloc] initWithBundleIdentifier:bundleId];
-    if (application.state != XCUIApplicationStateNotRunning) {
-        XCUIElementQuery *query = [application cbxQueryForDescendantsOfAnyType];
 
-        for (QuerySpecifier *specifier in self.queryConfiguration.selectors) {
-            query = [specifier applyToQuery:query];
-        }
-
-        return [query allElementsBoundByIndex];
-    } else {
-       return [[NSArray alloc] init];
+    if (application.processID == 0 || application.state != XCUIApplicationStateRunningForeground) {
+        return [[NSArray alloc] init];
     }
+
+    DDLogError(@"DA_DEBUG: Seaching for elements of application %@ of type any", bundleId);
+    NSDate *methodStart = [NSDate date];
+    XCUIElementQuery *query = [application descendantsMatchingType:0];
+    DDLogError(@"DA_DEBUG: DID Seach for elements of application %@ of type any. Execution time: %f",
+               bundleId, [[NSDate date] timeIntervalSinceDate:methodStart]);
+
+    for (QuerySpecifier *specifier in self.queryConfiguration.selectors) {
+        query = [specifier applyToQuery:query];
+    }
+
+    DDLogError(@"DA_DEBUG: Getting children elements of application %@", bundleId);
+    NSDate *method2Start = [NSDate date];
+    NSArray<XCUIElement *> *elements = [query allElementsBoundByIndex];
+    DDLogError(@"DA_DEBUG: DID Get children elements of application %@. Execution time: %f",
+               bundleId, [[NSDate date] timeIntervalSinceDate:method2Start]);
+
+    return elements;
 }
 
 
