@@ -51,11 +51,15 @@
  */
 + (XCUIApplicationState)terminateApplication:(XCUIApplication *_Nullable)application;
 
++ (NSSet<XCUIApplication *> *_Nonnull)findCurrentApplications;
++ (XCUIApplication *_Nonnull)findCurrentApplication;
++ (XCUIApplication *_Nonnull)getApplicationFromPID:(NSInteger)pid;
 /**
  Returns a tree representation of the application view hierarchy.
 
  @return a dictionary of views.
  */
 + (NSDictionary *_Nonnull)tree;
++ (NSDictionary *_Nonnull)tree_current;
 + (NSDictionary *_Nonnull)tree:(NSString *_Nullable)bundleId;
 @end

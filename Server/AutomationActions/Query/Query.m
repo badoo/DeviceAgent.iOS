@@ -69,6 +69,37 @@
     //}
 }
 
+- (NSArray<XCUIElement *> *)executeWithApplication:(XCUIApplication *)application {
+    if (self.queryConfiguration.selectors.count == 0) {
+        @throw [CBXException withMessage:@"Query must have at least one "
+                "specifier"];
+    }
+
+    if (application.processID == 0) {
+        @throw [CBXException withMessage:
+                [NSString stringWithFormat:@"Current application is NOT running. Cannot "
+                "perform queries until POST /session route is called. App bundle ID: %@, PID: %ld", application.bundleID, application.processID]];
+    }
+
+    if (application.state != XCUIApplicationStateRunningForeground && application.state != XCUIApplicationStateRunningBackground) {
+        @throw [CBXException withMessage:[NSString stringWithFormat:@"Current application is NOT running. Cannot "
+                                         "perform queries until POST /session route is called. App bundle ID: %@, state: %ld", application.bundleID, application.state]];
+    }
+
+    DDLogError(@"DA_DEBUG: Seaching for elements of current application of type any");
+    NSDate *methodStart = [NSDate date];
+    XCUIElementQuery *query = [application descendantsMatchingType:0];
+    NSDate *methodFinish = [NSDate date];
+    DDLogError(@"DA_DEBUG: DID Seach for elements of current application of type any. Execution time: %f",
+               [methodFinish timeIntervalSinceDate:methodStart]);
+
+    for (QuerySpecifier *specifier in self.queryConfiguration.selectors) {
+        query = [specifier applyToQuery:query];
+    }
+
+    return [query allElementsBoundByIndex];
+}
+
 - (NSArray<XCUIElement *> *)execute:(NSString *_Nullable)bundleId {
     if (self.queryConfiguration.selectors.count == 0) {
         @throw [CBXException withMessage:@"Query must have at least one "

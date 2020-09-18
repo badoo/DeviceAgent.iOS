@@ -11,6 +11,8 @@
 #import "JSONUtils.h"
 #import "CBXDevice.h"
 #import "CBXMachClock.h"
+#import "XCAccessibilityElement.h"
+#import "XCAXClient_iOS.h"
 
 @interface Application ()
 @property (nonatomic, strong) XCUIApplication *app;
@@ -93,6 +95,55 @@ static Application *currentApplication;
     } else {
         return [Application terminateApplication:app];
     }
+}
+
++ (XCUIApplication *)findCurrentApplication
+{
+    NSArray<XCAccessibilityElement *> *activeApplicationElements = [[XCUIDevice.sharedDevice accessibilityInterface] activeApplications];
+    XCAccessibilityElement *element = [activeApplicationElements firstObject];
+    XCUIApplication *app = [self getApplicationFromPID:[element processIdentifier]];
+    return app;
+}
+
++ (NSSet<XCUIApplication *> *)findCurrentApplications
+{
+    NSArray<XCAccessibilityElement *> *activeApplicationElements = [[XCUIDevice.sharedDevice accessibilityInterface] activeApplications];
+
+    NSMutableSet *apps = [NSMutableSet set];
+
+    for (XCAccessibilityElement *appElement in activeApplicationElements) {
+        [apps addObject:[self getApplicationFromPID:[appElement processIdentifier]]];
+    }
+
+    return apps;
+}
+
++ (XCUIApplication *)getApplicationFromPID:(NSInteger)pid
+{
+    __block NSString *resultBundleId = nil;
+    __block NSError *resultError = nil;
+    dispatch_semaphore_t sem2 = dispatch_semaphore_create(0);
+
+    id<XCTestManager_ManagerInterface> proxy = [Testmanagerd get];
+
+    [proxy _XCT_requestBundleIDForPID:pid
+                                reply:^(NSString *bundleID, NSError *error) {
+                                  if (nil == error) {
+                                    resultBundleId = bundleID;
+                                  } else {
+                                    resultError = error;
+                                  }
+                                  dispatch_semaphore_signal(sem2);
+                                }];
+    dispatch_semaphore_wait(sem2, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0 * NSEC_PER_SEC)));
+
+    if (resultError != nil) {
+        DDLogError(@"Failed to find Bundle ID for PID %ld. Error: %@", pid, [resultError description]);
+    }
+
+    XCUIApplication * app = [[XCUIApplication alloc] initWithBundleIdentifier:resultBundleId];
+
+    return app;
 }
 
 + (XCUIApplicationState)terminateApplication:(XCUIApplication *)application {
@@ -183,6 +234,13 @@ static Application *currentApplication;
 + (NSDictionary *)tree {
     XCUIApplication *application = [Application currentApplication];
 
+    XCUIElementQuery *applicationQuery = [XCUIApplication cbxQuery:application];
+    XCElementSnapshot *applicationSnaphot = [applicationQuery cbx_elementSnapshotForDebugDescription];
+    return [Application snapshotTree:applicationSnaphot];
+}
+
++ (NSDictionary *)tree_current {
+    XCUIApplication *application = [Application findCurrentApplication];
     XCUIElementQuery *applicationQuery = [XCUIApplication cbxQuery:application];
     XCElementSnapshot *applicationSnaphot = [applicationQuery cbx_elementSnapshotForDebugDescription];
     return [Application snapshotTree:applicationSnaphot];

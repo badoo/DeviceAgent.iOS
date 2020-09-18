@@ -4,6 +4,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AutomationAction.h"
+#import "CBX-XCTest-Umbrella.h"
 
 @class QueryConfiguration;
 @class CoordinateQuery;
@@ -61,6 +62,7 @@ Convenience constructor.
  */
 - (NSArray <XCUIElement *> *)execute;
 - (NSArray <XCUIElement *> *)execute:(NSString *_Nullable)bundleId;
+- (NSArray <XCUIElement *> *)executeWithApplication:(XCUIApplication *)application;
 
 /*
     Debug description
