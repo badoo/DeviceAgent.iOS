@@ -50,6 +50,13 @@ static NSArray *axAttributes;
           [response respondWithJSON:[Application tree]];
       }],
 
+      [CBXRoute get:endpoint(@"/tree_current", 1.0) withBlock:^(RouteRequest *request,
+                                                        NSDictionary *data,
+                                                        RouteResponse *response) {
+          [[SpringBoard application] handleAlertsOrThrow];
+          [response respondWithJSON:[Application tree_current]];
+      }],
+
       [CBXRoute get:endpoint(@"/tree_app", 1.0) withBlock:^(RouteRequest *request,
                                                         NSDictionary *data,
                                                         RouteResponse *response) {
@@ -85,6 +92,75 @@ static NSArray *axAttributes;
               [results addObject:json];
           }
           [response respondWithJSON:@{@"result" : results}];
+      }],
+
+      [CBXRoute post:endpoint(@"/query_current_app", 1.0) withBlock:^(RouteRequest *request,
+                                                          NSDictionary *body,
+                                                          RouteResponse *response) {
+          [[SpringBoard application] handleAlertsOrThrow];
+          QueryConfiguration *config;
+          config = [QueryConfigurationFactory configWithJSON:body
+                                                   validator:[Query validator]];
+          Query *query = [QueryFactory queryWithQueryConfiguration:config];
+
+          XCUIApplication *application = nil;
+          NSArray <XCUIElement *> *elements = [query executeWithApplication:application];
+
+          /*
+           Format and return the results
+           */
+          NSMutableArray *results = [NSMutableArray arrayWithCapacity:elements.count];
+          for (XCUIElement *el in elements) {
+              NSDictionary *json = [JSONUtils snapshotOrElementToJSON:el];
+              [results addObject:json];
+          }
+          [response respondWithJSON:@{@"result" : results}];
+      }],
+
+
+      [CBXRoute get:endpoint(@"/current_app", 1.0) withBlock:^(RouteRequest *request,
+                                                          NSDictionary *body,
+                                                          RouteResponse *response) {
+          XCUIApplication *app = [Application findCurrentApplication];
+          [response respondWithJSON:@{@"result" : app.bundleID}];
+      }],
+
+      [CBXRoute get:endpoint(@"/current_apps", 1.0) withBlock:^(RouteRequest *request,
+                                                          NSDictionary *body,
+                                                          RouteResponse *response) {
+          NSSet<XCUIApplication *> *apps = [Application findCurrentApplications];
+          NSMutableArray *results = [NSMutableArray arrayWithCapacity:apps.count];
+
+          for (XCUIApplication *app in apps) {
+              [results addObject:[app bundleID]];
+          }
+
+          [response respondWithJSON:@{@"result" : results}];
+      }],
+
+      [CBXRoute post:endpoint(@"/query_all_current_apps", 1.0) withBlock:^(RouteRequest *request,
+                                                          NSDictionary *body,
+                                                          RouteResponse *response) {
+          QueryConfiguration *config;
+          config = [QueryConfigurationFactory configWithJSON:body
+                                                   validator:[Query validator]];
+          Query *query = [QueryFactory queryWithQueryConfiguration:config];
+          NSSet *apps = [Application findCurrentApplications];
+          NSMutableArray *allAppsElements = [NSMutableArray array];;
+
+          for (XCUIApplication *app in apps) {
+              NSArray <XCUIElement *> *elements = [query executeWithApplication:app];
+
+              NSMutableArray *appElements = [NSMutableArray arrayWithCapacity:elements.count];
+
+              for (XCUIElement *element in elements) {
+                  [appElements addObject:[JSONUtils snapshotOrElementToJSON:element]];
+              }
+
+              [allAppsElements addObject:appElements];
+          }
+
+          [response respondWithJSON:@{@"result" : allAppsElements}];
       }],
 
       [CBXRoute post:endpoint(@"/query_all", 1.0) withBlock:^(RouteRequest *request,
