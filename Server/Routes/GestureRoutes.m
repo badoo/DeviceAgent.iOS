@@ -85,7 +85,29 @@
                  }
 
                  [response respondWithJSON:responseBody];
+             }],
+             
+             [CBXRoute post:endpoint(@"/preferable-autodismiss-springboard-alert", 1.0) withBlock:^(RouteRequest *request,
+                                                                                                  NSDictionary *body,
+                                                                                                  RouteResponse *response) {
+                 NSArray<NSString *> *buttons = body[@"preferable_buttons"];
+                 if (buttons == nil) {
+                     @throw [InvalidArgumentException
+                             withMessage:@"Request body is missing required key: 'preferable_buttons'"
+                             userInfo:@{@"received_body" : body}];
+                 }
+                 
+                 if ([buttons count] == 0) {
+                     @throw [InvalidArgumentException
+                             withMessage:@"Request body is missing required value for key 'preferable_buttons'"
+                             userInfo:@{@"received_body" : body}];
+                 }
+
+                 NSString *result = [[SpringBoard application] autodismissAlertWithPreferences:buttons];
+
+                 [response respondWithJSON:@{ @"status" : result }];
              }]
+
              ];
 }
 

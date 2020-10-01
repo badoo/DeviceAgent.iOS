@@ -140,6 +140,56 @@ typedef enum : NSUInteger {
     }
 }
 
+- (NSString *)autodismissAlertWithPreferences: (NSArray<NSString *> *) preferableButtons {
+    XCUIApplication *app = [[XCUIApplication alloc] initWithBundleIdentifier:@"com.apple.springboard"];
+    XCUIElementQuery *alerts = [app alerts];
+
+    if ([alerts count] == 0) {
+        return @"Alert is not found. Skip dismiss alert button action.";
+    }
+    else {
+        DDLogDebug(@"Found alerts: '%lu'", (unsigned long)alerts.count);
+    }
+
+    XCUIElement *actualAlert = [alerts element];
+    
+    return [self autodismissAlert:actualAlert preferableButtons:preferableButtons];
+}
+
+- (NSString *)autodismissAlert: (XCUIElement *) alert preferableButtons: (NSArray<NSString *> *) preferableButtons {
+    NSString *alertLabel = alert.label;
+    DDLogDebug(@"Autodismiss the alert = '%@' using preferable buttons: '%@'",
+               alertLabel, preferableButtons);
+    
+    NSMutableDictionary *alertButtons = [[NSMutableDictionary alloc] init];
+    NSArray<XCUIElement *> *actualButtons = [[alert buttons] allElementsBoundByIndex];
+
+    for (XCUIElement *actualButton in actualButtons) {
+        NSString *actualButtonLabel = [actualButton label];
+        alertButtons[actualButtonLabel] = actualButton;
+    }
+    
+    // INFO: Dismiss preferable button if button on alert
+    for (NSString *preferableButton in preferableButtons) {
+        XCUIElement *button = alertButtons[preferableButton];
+        if (button) {
+            [button tap];
+            return [NSString stringWithFormat:@"Alert '%@' is found. Tap on the preferable button '%@'.",
+                    alertLabel, preferableButton];
+        }
+    }
+    
+    // INFO: Dismiss first button in case preferable button is not found
+    XCUIElement *firstButton = [actualButtons firstObject];
+    NSString *firstButtonLabel = firstButton.label;
+    
+    [firstButton tap];
+    
+    return [NSString stringWithFormat:@"Alert '%@' is found without preferable buttons. Tap on the first button '%@'.",
+            alertLabel, firstButtonLabel];
+}
+
+
 - (XCUIElement *)findDismissButtonOnAlert: (XCUIElement *) alert marks: (NSArray *) marks {
     XCUIElement *button = nil;
     for (NSString *mark in marks) {
