@@ -54,8 +54,6 @@ typedef enum : NSUInteger {
     dispatch_once(&onceToken, ^{
         _springBoard = [[SpringBoard alloc]
                         initWithBundleIdentifier:@"com.apple.springboard"];
-
-        [XCUIApplication cbxResolveApplication:_springBoard];
     });
     return _springBoard;
 }
@@ -87,56 +85,7 @@ typedef enum : NSUInteger {
 
         if (![self shouldDismissAlertsAutomatically]) { return; }
 
-        SpringBoardAlertHandlerResult current = SpringBoardAlertHandlerNoAlert;
-
-        // There are fewer than 20 kinds of SpringBoard alerts.
-        NSUInteger maxTries = 20;
-        NSUInteger try = 0;
-
-        current = [self handleAlert];
-
-        while(current != SpringBoardAlertHandlerNoAlert && try < maxTries) {
-            current = [self handleAlert];
-            if (current == SpringBoardAlertHandlerUnrecognizedAlert) {
-                break;
-            }
-            try = try + 1;
-        }
-
-        if (try == maxTries || current == SpringBoardAlertHandlerUnrecognizedAlert) {
-            XCUIElement *alert = nil;
-            NSString *alertTitle = nil;
-            NSArray *alertButtonTitles = @[];
-
-            alert = [self queryForAlert];
-
-            if (alert && alert.exists) {
-                alertTitle = alert.label;
-                XCUIElementQuery *query = [alert descendantsMatchingType:XCUIElementTypeButton];
-                NSArray<XCUIElement *> *buttons = [query allElementsBoundByIndex];
-
-                NSMutableArray *mutable = [NSMutableArray arrayWithCapacity:buttons.count];
-
-                for(XCUIElement *button in buttons) {
-                    if (button.exists) {
-                        NSString *name = button.label;
-                        if (name) {
-                            [mutable addObject:name];
-                        }
-                    }
-                }
-                alertButtonTitles = [NSArray arrayWithArray:mutable];
-            }
-
-            NSString *message;
-            message = @"A SpringBoard alert is blocking test execution and it cannot be dismissed.";
-            @throw [CBXException withMessage:message
-                                    userInfo:@{
-                                               @"title" : alertTitle ?: [NSNull null],
-                                               @"buttons" : alertButtonTitles,
-                                               @"tries" : @(maxTries)
-                                               }];
-        }
+        [self autodismissAlertWithPreferences:@[@"Cancel", @"OK"]];
     }
 }
 
