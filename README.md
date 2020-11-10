@@ -113,4 +113,3 @@ $ XCPRETTY=0 make ipa-agent
 
 DeviceAgent uses several third-party sources.  You can find the licenses for
 these sources in the Licenses directory.
-
