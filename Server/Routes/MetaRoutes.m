@@ -146,30 +146,35 @@ static NSDictionary *protectedResources = nil;
                   withBlock:^(RouteRequest *request,
                               NSDictionary *data,
                               RouteResponse *response) {
-                 NSString *protectedResourceKey = @"protected_resource";
-                 NSString *protectedResourceName = data[protectedResourceKey];
+                 if (@available(iOS 13.0, *)) {
+                     NSString *protectedResourceKey = @"protected_resource";
+                     NSString *protectedResourceName = data[protectedResourceKey];
 
-                 if (protectedResourceName == nil) {
+                     if (protectedResourceName == nil) {
+                         @throw [CBXException withFormat:
+                                 @"Missing required key '%@' in request body: %@",
+                                 protectedResourceKey, data];
+                     }
+
+                     NSNumber *protectedResource = protectedResources[protectedResourceName];
+
+                     if (protectedResource == nil) {
+                         @throw [CBXException withFormat:
+                                 @"Unknown protected resource type for key '%@'. Known resources are: %@",
+                                 protectedResourceName, protectedResources.allKeys];
+                     }
+
+                     NSString *bundleIdentifier = data[CBX_BUNDLE_ID_KEY];
+                     XCUIApplication *application = [[XCUIApplication alloc]
+                                                     initWithBundleIdentifier:bundleIdentifier];
+
+                     [application resetAuthorizationStatusForResource:[protectedResource intValue]];
+
+                     [response respondWithJSON:@{@"result" : @"OK"}];
+                 } else {
                      @throw [CBXException withFormat:
-                             @"Missing required key '%@' in request body: %@",
-                             protectedResourceKey, data];
+                             @"Unsupported operation resetAuthorizationStatusForResource on iOS below version 13.0 "];
                  }
-
-                 NSNumber *protectedResource = protectedResources[protectedResourceName];
-
-                 if (protectedResource == nil) {
-                     @throw [CBXException withFormat:
-                             @"Unknown protected resource type for key '%@'. Known resources are: %@",
-                             protectedResourceName, protectedResources.allKeys];
-                 }
-
-                 NSString *bundleIdentifier = data[CBX_BUNDLE_ID_KEY];
-                 XCUIApplication *application = [[XCUIApplication alloc]
-                                                 initWithBundleIdentifier:bundleIdentifier];
-
-                 [application resetAuthorizationStatusForResource:[protectedResource intValue]];
-
-                 [response respondWithJSON:@{@"result" : @"OK"}];
                 }
               ],
 
