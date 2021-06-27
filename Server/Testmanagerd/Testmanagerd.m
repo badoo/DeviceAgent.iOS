@@ -56,3 +56,29 @@
 }
 
 @end
+
+
+@interface Testmanagerd_BundleRequesting()
+@end
+
+@implementation Testmanagerd_BundleRequesting
+
++ (id<XCTMessagingRole_BundleRequesting>)get {
+
+    static id <XCTMessagingRole_BundleRequesting> managerInterface = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class xctRunnerDaemonSessionClass = objc_lookUpClass("XCTRunnerDaemonSession");
+        if (xctRunnerDaemonSessionClass) {
+            // Xcode >= 8.3
+            XCTRunnerDaemonSession *session = [xctRunnerDaemonSessionClass sharedSession];
+            managerInterface = [session daemonProxy];
+        } else {
+            @throw [CBXException withMessage:@"Could not obtain a reference to XCTestManager."];
+        }
+    });
+    return managerInterface;
+
+}
+
+@end

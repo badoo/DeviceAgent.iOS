@@ -58,6 +58,14 @@
 		419BE54B231E46D800DF0ABD /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4107F8FC231D7262003961AF /* Resources.xcassets */; };
 		7DEAAE74241FA80D009894BA /* FBXCTestCaseImplementationFailureHoldingProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEAAE72241FA80D009894BA /* FBXCTestCaseImplementationFailureHoldingProxy.m */; };
 		7DEAAE75241FA80D009894BA /* FBXCTestCaseImplementationFailureHoldingProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DEAAE73241FA80D009894BA /* FBXCTestCaseImplementationFailureHoldingProxy.h */; };
+		7DF60845243B5D1200A66E46 /* FBTCPSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF60843243B5D1200A66E46 /* FBTCPSocket.h */; };
+		7DF60846243B5D1200A66E46 /* FBTCPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF60844243B5D1200A66E46 /* FBTCPSocket.m */; };
+		7DF60849243B5DFF00A66E46 /* FBMjpegServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF60847243B5DFF00A66E46 /* FBMjpegServer.m */; };
+		7DF6084A243B5DFF00A66E46 /* FBMjpegServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF60848243B5DFF00A66E46 /* FBMjpegServer.h */; };
+		7DF6084D243B622F00A66E46 /* FBImageIOScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6084B243B622F00A66E46 /* FBImageIOScaler.m */; };
+		7DF6084E243B622F00A66E46 /* FBImageIOScaler.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF6084C243B622F00A66E46 /* FBImageIOScaler.h */; };
+		7DF60851243BC14000A66E46 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF60850243BC14000A66E46 /* ImageIO.framework */; };
+		7DF60853243BC2AB00A66E46 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF60852243BC2AA00A66E46 /* MobileCoreServices.framework */; };
 		8415AEE225750735001694B1 /* XCTestConfigurationLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8415AEE125750735001694B1 /* XCTestConfigurationLoader.h */; };
 		8415AEFC25750F32001694B1 /* _XCTestObservationInternal-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 8415AEFB25750F32001694B1 /* _XCTestObservationInternal-Protocol.h */; };
 		8415AF1625750F3A001694B1 /* _XCTRunnerDaemonSessionDummyExportedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8415AF1525750F3A001694B1 /* _XCTRunnerDaemonSessionDummyExportedObject.h */; };
@@ -288,15 +296,6 @@
 		84D3D601264465B4009EF056 /* XCTMessagingRole_UIApplicationStateUpdating-Protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 84D3D57E264465B4009EF056 /* XCTMessagingRole_UIApplicationStateUpdating-Protocol.h */; };
 		84D3D602264465B4009EF056 /* XCTTelemetryLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 84D3D57F264465B4009EF056 /* XCTTelemetryLogger.h */; };
 		84D3D603264465B4009EF056 /* XCTTelemetryLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 84D3D57F264465B4009EF056 /* XCTTelemetryLogger.h */; };
-		7DEAAE79241FEEF8009894BA /* _XCTestCaseImplementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DEAAE78241FEEF7009894BA /* _XCTestCaseImplementation.h */; };
-		7DF60845243B5D1200A66E46 /* FBTCPSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF60843243B5D1200A66E46 /* FBTCPSocket.h */; };
-		7DF60846243B5D1200A66E46 /* FBTCPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF60844243B5D1200A66E46 /* FBTCPSocket.m */; };
-		7DF60849243B5DFF00A66E46 /* FBMjpegServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF60847243B5DFF00A66E46 /* FBMjpegServer.m */; };
-		7DF6084A243B5DFF00A66E46 /* FBMjpegServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF60848243B5DFF00A66E46 /* FBMjpegServer.h */; };
-		7DF6084D243B622F00A66E46 /* FBImageIOScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6084B243B622F00A66E46 /* FBImageIOScaler.m */; };
-		7DF6084E243B622F00A66E46 /* FBImageIOScaler.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF6084C243B622F00A66E46 /* FBImageIOScaler.h */; };
-		7DF60851243BC14000A66E46 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF60850243BC14000A66E46 /* ImageIO.framework */; };
-		7DF60853243BC2AB00A66E46 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF60852243BC2AA00A66E46 /* MobileCoreServices.framework */; };
 		89331CCE1CC00E82003C2E59 /* RotatePinchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89331CCD1CC00E82003C2E59 /* RotatePinchViewController.m */; };
 		89331D301CC50447003C2E59 /* ThreadUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 89331D2E1CC50447003C2E59 /* ThreadUtils.h */; };
 		89331D321CC50447003C2E59 /* ThreadUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 89331D2F1CC50447003C2E59 /* ThreadUtils.m */; };
@@ -962,6 +961,14 @@
 		63424E46759C6B27C2BEC337 /* SpringBoardAlertsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SpringBoardAlertsTest.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; };
 		7DEAAE72241FA80D009894BA /* FBXCTestCaseImplementationFailureHoldingProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBXCTestCaseImplementationFailureHoldingProxy.m; sourceTree = "<group>"; };
 		7DEAAE73241FA80D009894BA /* FBXCTestCaseImplementationFailureHoldingProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBXCTestCaseImplementationFailureHoldingProxy.h; sourceTree = "<group>"; };
+		7DF60843243B5D1200A66E46 /* FBTCPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTCPSocket.h; sourceTree = "<group>"; };
+		7DF60844243B5D1200A66E46 /* FBTCPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTCPSocket.m; sourceTree = "<group>"; };
+		7DF60847243B5DFF00A66E46 /* FBMjpegServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMjpegServer.m; sourceTree = "<group>"; };
+		7DF60848243B5DFF00A66E46 /* FBMjpegServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMjpegServer.h; sourceTree = "<group>"; };
+		7DF6084B243B622F00A66E46 /* FBImageIOScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBImageIOScaler.m; sourceTree = "<group>"; };
+		7DF6084C243B622F00A66E46 /* FBImageIOScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBImageIOScaler.h; sourceTree = "<group>"; };
+		7DF60850243BC14000A66E46 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
+		7DF60852243BC2AA00A66E46 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8415AEE125750735001694B1 /* XCTestConfigurationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTestConfigurationLoader.h; sourceTree = "<group>"; };
 		8415AEFB25750F32001694B1 /* _XCTestObservationInternal-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_XCTestObservationInternal-Protocol.h"; sourceTree = "<group>"; };
 		8415AF1525750F3A001694B1 /* _XCTRunnerDaemonSessionDummyExportedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _XCTRunnerDaemonSessionDummyExportedObject.h; sourceTree = "<group>"; };
@@ -1128,14 +1135,6 @@
 		84D3D57D264465B4009EF056 /* XCTMessagingRole_DiagnosticsCollection-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTMessagingRole_DiagnosticsCollection-Protocol.h"; sourceTree = "<group>"; };
 		84D3D57E264465B4009EF056 /* XCTMessagingRole_UIApplicationStateUpdating-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTMessagingRole_UIApplicationStateUpdating-Protocol.h"; sourceTree = "<group>"; };
 		84D3D57F264465B4009EF056 /* XCTTelemetryLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTTelemetryLogger.h; sourceTree = "<group>"; };
-		7DF60843243B5D1200A66E46 /* FBTCPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTCPSocket.h; sourceTree = "<group>"; };
-		7DF60844243B5D1200A66E46 /* FBTCPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTCPSocket.m; sourceTree = "<group>"; };
-		7DF60847243B5DFF00A66E46 /* FBMjpegServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMjpegServer.m; sourceTree = "<group>"; };
-		7DF60848243B5DFF00A66E46 /* FBMjpegServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMjpegServer.h; sourceTree = "<group>"; };
-		7DF6084B243B622F00A66E46 /* FBImageIOScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBImageIOScaler.m; sourceTree = "<group>"; };
-		7DF6084C243B622F00A66E46 /* FBImageIOScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBImageIOScaler.h; sourceTree = "<group>"; };
-		7DF60850243BC14000A66E46 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
-		7DF60852243BC2AA00A66E46 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		89331CCC1CC00E82003C2E59 /* RotatePinchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatePinchViewController.h; sourceTree = "<group>"; };
 		89331CCD1CC00E82003C2E59 /* RotatePinchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatePinchViewController.m; sourceTree = "<group>"; };
 		89331D2E1CC50447003C2E59 /* ThreadUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadUtils.h; sourceTree = "<group>"; };
@@ -3260,9 +3259,7 @@
 				8415B514257510D6001694B1 /* XCUIDeviceEventAndStateInterface-Protocol.h in Headers */,
 				F54C02102043F0EF00FD8DDE /* XCUIApplication.h in Headers */,
 				84D3D5AC264465B4009EF056 /* XCTMessagingRole_AccessibilityNotificationReporting-Protocol.h in Headers */,
-				F54C02632043F0EF00FD8DDE /* XCTestManager_ManagerInterface-Protocol.h in Headers */,
 				7DF6084A243B5DFF00A66E46 /* FBMjpegServer.h in Headers */,
-				F54C02712043F0EF00FD8DDE /* _XCTestCaseImplementation.h in Headers */,
 				F54C02062043F0EF00FD8DDE /* XCTActivity-Protocol.h in Headers */,
 				84D3D5BC264465B4009EF056 /* XCTMessagingRole_PerformanceMeasurementReporting-Protocol.h in Headers */,
 				84D3D528264464B6009EF056 /* XCTElementDisclosedChildRowsTransformer.h in Headers */,
