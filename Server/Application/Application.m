@@ -124,9 +124,7 @@ static Application *currentApplication;
     __block NSError *resultError = nil;
     dispatch_semaphore_t sem2 = dispatch_semaphore_create(0);
 
-    id<XCTestManager_ManagerInterface> proxy = [Testmanagerd get];
-
-    [proxy _XCT_requestBundleIDForPID:pid
+    [[Testmanagerd_BundleRequesting get] _XCT_requestBundleIDForPID:pid
                                 reply:^(NSString *bundleID, NSError *error) {
                                   if (nil == error) {
                                     resultBundleId = bundleID;

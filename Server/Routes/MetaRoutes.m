@@ -14,7 +14,6 @@
 #import "XCTest+CBXAdditions.h"
 
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "XCTestManager_ManagerInterface-Protocol.h"
 #import "Testmanagerd.h"
 #import "XCTest/XCUIProtectedResource.h"
 
@@ -206,10 +205,9 @@ static NSDictionary *protectedResources = nil;
                              RouteResponse *response) {
 
                  CGFloat screenshotCompressionQuality = 1.0f;
-                 id<XCTestManager_ManagerInterface> proxy = [Testmanagerd get];
                  __block NSData *screenshotData = nil;
                  dispatch_semaphore_t sem = dispatch_semaphore_create(0);
-                 [proxy _XCT_requestScreenshotOfScreenWithID:[[XCUIScreen mainScreen] displayID]
+                 [[Testmanagerd_CapabilityExchange get] _XCT_requestScreenshotOfScreenWithID:[[XCUIScreen mainScreen] displayID]
                                                     withRect:CGRectNull
                                                          uti:(__bridge id)kUTTypePNG
                                           compressionQuality:screenshotCompressionQuality

@@ -252,7 +252,7 @@ static NSArray *axAttributes;
           __block XCAccessibilityElement *elementAtPoint;
           __block NSError *elementRequestError;
           dispatch_semaphore_t sem = dispatch_semaphore_create(0);
-          [[Testmanagerd get] _XCT_requestElementAtPoint:screenPoint
+          [[Testmanagerd_CapabilityExchange get] _XCT_requestElementAtPoint:screenPoint
                                       reply:^(XCAccessibilityElement *element, NSError *error) {
                                         if (error == nil) {
                                           elementAtPoint = element;
@@ -287,7 +287,7 @@ static NSArray *axAttributes;
   __block NSError *innerError = nil;
   dispatch_semaphore_t sem = dispatch_semaphore_create(0);
 
-  [[Testmanagerd get] _XCT_requestSnapshotForElement:element
+  [[Testmanagerd_CapabilityExchange get] _XCT_requestSnapshotForElement:element
                              attributes:axAttributes
                              parameters:parametersForFastElementSnapshot
                                   reply:^(XCElementSnapshot *snapshot, NSError *error) {

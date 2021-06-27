@@ -13,7 +13,6 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "GCDAsyncSocket.h"
 #import "Application.h"
-#import "XCTestManager_ManagerInterface-Protocol.h"
 #import "Testmanagerd.h"
 #import "XCUIScreen.h"
 #import "FBImageIOScaler.h"
@@ -95,9 +94,8 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
   // To get the desired compressionQuality we need to do a lossless compression here
   CGFloat screenshotCompressionQuality = usesScaling ? FBMaxCompressionQuality : compressionQuality;
 
-  id<XCTestManager_ManagerInterface> proxy = [Testmanagerd get];
   dispatch_semaphore_t sem = dispatch_semaphore_create(0);
-  [proxy _XCT_requestScreenshotOfScreenWithID:[[XCUIScreen mainScreen] displayID]
+  [[Testmanagerd_CapabilityExchange get] _XCT_requestScreenshotOfScreenWithID:[[XCUIScreen mainScreen] displayID]
                                        withRect:CGRectNull
                                             uti:(__bridge id)kUTTypeJPEG
                              compressionQuality:screenshotCompressionQuality
@@ -145,7 +143,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
   static dispatch_once_t onceCanStream;
   static BOOL result;
   dispatch_once(&onceCanStream, ^{
-    result = [(NSObject *)[Testmanagerd get] respondsToSelector:@selector(_XCT_requestScreenshotOfScreenWithID:withRect:uti:compressionQuality:withReply:)];
+    result = [(NSObject *)[Testmanagerd_CapabilityExchange get] respondsToSelector:@selector(_XCT_requestScreenshotOfScreenWithID:withRect:uti:compressionQuality:withReply:)];
   });
   return result;
 }

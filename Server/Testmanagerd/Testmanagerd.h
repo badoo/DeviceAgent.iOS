@@ -47,4 +47,8 @@
 
 @end
 
+#import "XCTMessagingRole_BundleRequesting-Protocol.h"
 
+@interface Testmanagerd_BundleRequesting : NSObject
++ (id<XCTMessagingRole_BundleRequesting>)get;
+@end
