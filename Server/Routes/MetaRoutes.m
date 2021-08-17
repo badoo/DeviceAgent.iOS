@@ -12,12 +12,13 @@
 #import "CBXConstants.h"
 #import "CBXRoute.h"
 #import "XCTest+CBXAdditions.h"
-
+#import "CBXScreenshooter.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Testmanagerd.h"
 #import "XCTest/XCUIProtectedResource.h"
 
 static NSDictionary *protectedResources = nil;
+static CBXScreenshooter *screenshooter = nil;
 
 @implementation MetaRoutes
 + (void)initialize {
@@ -43,6 +44,12 @@ static NSDictionary *protectedResources = nil;
             protectedResourcesiOS14[@"Health"] = [NSNumber numberWithInt:XCUIProtectedResourceHealth];
             protectedResources = protectedResourcesiOS14;
         }
+
+        screenshooter = [[CBXScreenshooter alloc] initWithTestmanagerd:[Testmanagerd_CapabilityExchange get]
+                                                              displayID:[[XCUIScreen mainScreen] displayID]
+                                                            compression:1.0f
+                                                         typeIdentifier:(__bridge id)kUTTypePNG
+        ];
     });
 }
 
@@ -198,31 +205,13 @@ static NSDictionary *protectedResources = nil;
                       NSDictionary *json = @{@"is_dismissing_alerts_automatically" : @(value)};
                       [response respondWithJSON:json];
                   }],
-             
+
              [CBXRoute get:endpoint(@"/screenshot", 1.0)
                  withBlock:^(RouteRequest *request,
                              NSDictionary *body,
                              RouteResponse *response) {
 
-                 CGFloat screenshotCompressionQuality = 1.0f;
-                 __block NSData *screenshotData = nil;
-                 dispatch_semaphore_t sem = dispatch_semaphore_create(0);
-                 [[Testmanagerd_CapabilityExchange get] _XCT_requestScreenshotOfScreenWithID:[[XCUIScreen mainScreen] displayID]
-                                                    withRect:CGRectNull
-                                                         uti:(__bridge id)kUTTypePNG
-                                          compressionQuality:screenshotCompressionQuality
-                                                   withReply:^(NSData *data, NSError *error) {
-                     if (error != nil) {
-                         DDLogError(@"Error taking screenshot: %@", [error description]);
-                     }
-                     screenshotData = data;
-                     dispatch_semaphore_signal(sem);
-                 }];
-                 dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)));
-
-                 if (nil == screenshotData) {
-                     @throw [CBXException withFormat:@"Cannot take screenshot from the device"];
-                 }
+                 NSData *screenshotData = [screenshooter getScreenshotData];
 
                  NSString *screenshot = [screenshotData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
                  [response respondWithJSON:@{@"value": screenshot}];

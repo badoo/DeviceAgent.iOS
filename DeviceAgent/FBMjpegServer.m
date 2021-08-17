@@ -15,24 +15,19 @@
 #import "Application.h"
 #import "Testmanagerd.h"
 #import "XCUIScreen.h"
-#import "FBImageIOScaler.h"
+#import "CBXScreenshooter.h"
 
-static const NSTimeInterval SCREENSHOT_TIMEOUT = 0.5;
 static const NSUInteger MAX_FPS = 60;
-
 static NSString *const SERVER_NAME = @"WDA MJPEG Server";
 static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
-
 
 @interface FBMjpegServer()
 
 @property (nonatomic, readonly) dispatch_queue_t backgroundQueue;
 @property (nonatomic, readonly) NSMutableArray<GCDAsyncSocket *> *listeningClients;
 @property (nonatomic, readonly) mach_timebase_info_data_t timebaseInfo;
-@property (nonatomic, readonly) FBImageIOScaler *imageScaler;
-
+@property (nonatomic, readonly) CBXScreenshooter *screenshooter;
 @end
-
 
 @implementation FBMjpegServer
 
@@ -46,7 +41,12 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
     dispatch_async(_backgroundQueue, ^{
       [self streamScreenshot];
     });
-    _imageScaler = [[FBImageIOScaler alloc] init];
+
+    _screenshooter = [[CBXScreenshooter alloc] initWithTestmanagerd:[Testmanagerd_CapabilityExchange get]
+                                                          displayID:[[XCUIScreen mainScreen] displayID]
+                                                        compression:1.0f
+                                                     typeIdentifier:(__bridge id)kUTTypeJPEG
+    ];
   }
   return self;
 }
@@ -84,44 +84,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
     }
   }
 
-  __block NSData *screenshotData = nil;
-
-  CGFloat scalingFactor = FBMjpegScalingFactor / 100.0f;
-  BOOL usesScaling = fabs(FBMaxScalingFactor - scalingFactor) > DBL_EPSILON;
-
-  CGFloat compressionQuality = FBMjpegServerScreenshotQuality / 100.0f;
-  // If scaling is applied we perform another JPEG compression after scaling
-  // To get the desired compressionQuality we need to do a lossless compression here
-  CGFloat screenshotCompressionQuality = usesScaling ? FBMaxCompressionQuality : compressionQuality;
-
-  dispatch_semaphore_t sem = dispatch_semaphore_create(0);
-  [[Testmanagerd_CapabilityExchange get] _XCT_requestScreenshotOfScreenWithID:[[XCUIScreen mainScreen] displayID]
-                                       withRect:CGRectNull
-                                            uti:(__bridge id)kUTTypeJPEG
-                             compressionQuality:screenshotCompressionQuality
-                                      withReply:^(NSData *data, NSError *error) {
-    if (error != nil) {
-      DDLogError(@"Error taking screenshot: %@", [error description]);
-    }
-    screenshotData = data;
-    dispatch_semaphore_signal(sem);
-  }];
-  dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SCREENSHOT_TIMEOUT * NSEC_PER_SEC)));
-  if (nil == screenshotData) {
-    [self scheduleNextScreenshotWithInterval:timerInterval timeStarted:timeStarted];
-    return;
-  }
-
-  if (usesScaling) {
-    [self.imageScaler submitImage:screenshotData
-                    scalingFactor:scalingFactor
-               compressionQuality:compressionQuality
-                completionHandler:^(NSData * _Nonnull scaled) {
-                  [self sendScreenshot:scaled];
-                }];
-  } else {
-    [self sendScreenshot:screenshotData];
-  }
+  [self sendScreenshot:[_screenshooter getScreenshotData]];
 
   [self scheduleNextScreenshotWithInterval:timerInterval timeStarted:timeStarted];
 }

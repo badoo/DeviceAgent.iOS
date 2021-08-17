@@ -47,6 +47,8 @@
 /* Begin PBXBuildFile section */
 		0AA3924F23279A68000E799B /* SpringBoardAlertsCurrentLanguageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3924D23279A68000E799B /* SpringBoardAlertsCurrentLanguageTests.m */; };
 		1A020FC02338BEB600D79E57 /* XCTest+CBXAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F547174D204939DA0024AA0B /* XCTest+CBXAdditions.h */; };
+		1FE7F2F526CD486F0077C53D /* CBXScreenshooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FE7F2F426CD486F0077C53D /* CBXScreenshooter.h */; };
+		1FE7F2F726CD48930077C53D /* CBXScreenshooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7F2F626CD48930077C53D /* CBXScreenshooter.m */; };
 		3B5444E52498241500532AE0 /* QuerySpecifierByDescendantType.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B81F693240E937F00825603 /* QuerySpecifierByDescendantType.h */; };
 		3B5444EA249838AC00532AE0 /* QuerySpecifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5444E02498216000532AE0 /* QuerySpecifierTests.m */; };
 		3B81F695240E952F00825603 /* QuerySpecifierByDescendantType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81F694240E952F00825603 /* QuerySpecifierByDescendantType.m */; };
@@ -62,8 +64,6 @@
 		7DF60846243B5D1200A66E46 /* FBTCPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF60844243B5D1200A66E46 /* FBTCPSocket.m */; };
 		7DF60849243B5DFF00A66E46 /* FBMjpegServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF60847243B5DFF00A66E46 /* FBMjpegServer.m */; };
 		7DF6084A243B5DFF00A66E46 /* FBMjpegServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF60848243B5DFF00A66E46 /* FBMjpegServer.h */; };
-		7DF6084D243B622F00A66E46 /* FBImageIOScaler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6084B243B622F00A66E46 /* FBImageIOScaler.m */; };
-		7DF6084E243B622F00A66E46 /* FBImageIOScaler.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DF6084C243B622F00A66E46 /* FBImageIOScaler.h */; };
 		7DF60851243BC14000A66E46 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF60850243BC14000A66E46 /* ImageIO.framework */; };
 		7DF60853243BC2AB00A66E46 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF60852243BC2AA00A66E46 /* MobileCoreServices.framework */; };
 		8415AEE225750735001694B1 /* XCTestConfigurationLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8415AEE125750735001694B1 /* XCTestConfigurationLoader.h */; };
@@ -945,6 +945,8 @@
 
 /* Begin PBXFileReference section */
 		0AA3924D23279A68000E799B /* SpringBoardAlertsCurrentLanguageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SpringBoardAlertsCurrentLanguageTests.m; sourceTree = "<group>"; };
+		1FE7F2F426CD486F0077C53D /* CBXScreenshooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBXScreenshooter.h; sourceTree = "<group>"; };
+		1FE7F2F626CD48930077C53D /* CBXScreenshooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBXScreenshooter.m; sourceTree = "<group>"; };
 		3B5444E02498216000532AE0 /* QuerySpecifierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierTests.m; sourceTree = "<group>"; };
 		3B81F693240E937F00825603 /* QuerySpecifierByDescendantType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuerySpecifierByDescendantType.h; sourceTree = "<group>"; };
 		3B81F694240E952F00825603 /* QuerySpecifierByDescendantType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierByDescendantType.m; sourceTree = "<group>"; };
@@ -961,8 +963,6 @@
 		7DF60844243B5D1200A66E46 /* FBTCPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTCPSocket.m; sourceTree = "<group>"; };
 		7DF60847243B5DFF00A66E46 /* FBMjpegServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMjpegServer.m; sourceTree = "<group>"; };
 		7DF60848243B5DFF00A66E46 /* FBMjpegServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMjpegServer.h; sourceTree = "<group>"; };
-		7DF6084B243B622F00A66E46 /* FBImageIOScaler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBImageIOScaler.m; sourceTree = "<group>"; };
-		7DF6084C243B622F00A66E46 /* FBImageIOScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBImageIOScaler.h; sourceTree = "<group>"; };
 		7DF60850243BC14000A66E46 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		7DF60852243BC2AA00A66E46 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8415AEE125750735001694B1 /* XCTestConfigurationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTestConfigurationLoader.h; sourceTree = "<group>"; };
@@ -2421,8 +2421,6 @@
 				F58935FA1E93F16D00BDF39D /* DeviceAgent-simulator-template.xctestrun */,
 				F58935F71E93F09A00BDF39D /* CBX.xctestconfiguration */,
 				F55F83561C6DD99900A945C8 /* TestRunner.m */,
-				7DF6084C243B622F00A66E46 /* FBImageIOScaler.h */,
-				7DF6084B243B622F00A66E46 /* FBImageIOScaler.m */,
 				7DF60848243B5DFF00A66E46 /* FBMjpegServer.h */,
 				7DF60847243B5DFF00A66E46 /* FBMjpegServer.m */,
 				F519E0F81D79E336003A84B0 /* FBFailureProofTestCase.h */,
@@ -2547,6 +2545,8 @@
 				F547EEB11E43796A000FC160 /* CBXWaiter.m */,
 				F533496A1F3AFED7004138C7 /* CBXOrientation.h */,
 				F533496B1F3AFED7004138C7 /* CBXOrientation.m */,
+				1FE7F2F426CD486F0077C53D /* CBXScreenshooter.h */,
+				1FE7F2F626CD48930077C53D /* CBXScreenshooter.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -3285,6 +3285,7 @@
 				84D3D5C8264465B4009EF056 /* XCTMessagingRole_SelfDiagnosisIssueReporting-Protocol.h in Headers */,
 				F54C029A2043F0EF00FD8DDE /* XCTIndexingTransformerIterator.h in Headers */,
 				F54C02782043F0EF00FD8DDE /* XCTestRun.h in Headers */,
+				1FE7F2F526CD486F0077C53D /* CBXScreenshooter.h in Headers */,
 				899696EA1CB5857C00BB42E2 /* JSONKeyValidator.h in Headers */,
 				84D3D534264464B6009EF056 /* XCTImageConverter.h in Headers */,
 				F54C02B32043F0EF00FD8DDE /* XCTAccessibilityFramework.h in Headers */,
@@ -3346,7 +3347,6 @@
 				F54C02762043F0EF00FD8DDE /* NSKeyedUnarchiver-XCTestAdditions.h in Headers */,
 				84D3D5CA264465B4009EF056 /* _XCTTestIdentifier_Array.h in Headers */,
 				F55F82501C6DD07500A945C8 /* Route.h in Headers */,
-				7DF6084E243B622F00A66E46 /* FBImageIOScaler.h in Headers */,
 				F54C02462043F0EF00FD8DDE /* XCTASDebugLogDelegate-Protocol.h in Headers */,
 				84D3D5EA264465B4009EF056 /* XCTMessagingRole_UIRecordingControl-Protocol.h in Headers */,
 				84D3D596264465B4009EF056 /* XCUILocalDeviceScreenshotIPCInterface-Protocol.h in Headers */,
@@ -3932,6 +3932,7 @@
 				F55F840C1C6E437100A945C8 /* MetaRoutes.m in Sources */,
 				F55F818E1C6DD07500A945C8 /* HTTPConnection.m in Sources */,
 				89D538111CA34CBE00F62E09 /* QuerySpecifierByTextLike.m in Sources */,
+				1FE7F2F726CD48930077C53D /* CBXScreenshooter.m in Sources */,
 				B9A81FD6215E429A0067AE63 /* XCUIElement+VisibilityResult.m in Sources */,
 				F519E0FF1D79E336003A84B0 /* FBFailureProofTestCase.m in Sources */,
 				89331D321CC50447003C2E59 /* ThreadUtils.m in Sources */,
@@ -3981,7 +3982,6 @@
 				F55F82531C6DD07500A945C8 /* RouteRequest.m in Sources */,
 				F55F84101C6E437A00A945C8 /* JSONUtils.m in Sources */,
 				7DEAAE74241FA80D009894BA /* FBXCTestCaseImplementationFailureHoldingProxy.m in Sources */,
-				7DF6084D243B622F00A66E46 /* FBImageIOScaler.m in Sources */,
 				F5E663211D74958200068CE9 /* SpringBoard.m in Sources */,
 				F5870B431CF0BEFF00B3376C /* TouchPath.m in Sources */,
 				89512BDC1C9EEC3C0027D61E /* Drag.m in Sources */,

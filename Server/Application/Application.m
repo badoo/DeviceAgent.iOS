@@ -136,7 +136,7 @@ static Application *currentApplication;
     dispatch_semaphore_wait(sem2, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10.0 * NSEC_PER_SEC)));
 
     if (resultError != nil) {
-        DDLogError(@"Failed to find Bundle ID for PID %ld. Error: %@", pid, [resultError description]);
+        DDLogError(@"Failed to find Bundle ID for PID %ld. Error: %@", (long) pid, [resultError description]);
     }
 
     XCUIApplication * app = [[XCUIApplication alloc] initWithBundleIdentifier:resultBundleId];
