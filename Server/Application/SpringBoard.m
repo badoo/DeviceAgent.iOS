@@ -109,27 +109,18 @@ typedef enum : NSUInteger {
     NSString *alertLabel = alert.label;
     DDLogDebug(@"Autodismiss the alert = '%@' using preferable buttons: '%@'",
                alertLabel, preferableButtons);
-    
-    NSMutableDictionary *alertButtons = [[NSMutableDictionary alloc] init];
-    NSArray<XCUIElement *> *actualButtons = [[alert buttons] allElementsBoundByIndex];
 
-    for (XCUIElement *actualButton in actualButtons) {
-        NSString *actualButtonLabel = [actualButton label];
-        alertButtons[actualButtonLabel] = actualButton;
-    }
-    
-    // INFO: Dismiss preferable button if button on alert
     for (NSString *preferableButton in preferableButtons) {
-        XCUIElement *button = alertButtons[preferableButton];
-        if (button) {
+        XCUIElement *button = alert.buttons[preferableButton];
+        if ([button exists]) {
             [button tap];
             return [NSString stringWithFormat:@"Alert '%@' is found. Tap on the preferable button '%@'.",
                     alertLabel, preferableButton];
         }
     }
-    
+
     // INFO: Dismiss first button in case preferable button is not found
-    XCUIElement *firstButton = [actualButtons firstObject];
+    XCUIElement *firstButton = alert.buttons.firstMatch;
     NSString *firstButtonLabel = firstButton.label;
     
     [firstButton tap];
