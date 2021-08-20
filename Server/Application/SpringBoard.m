@@ -43,7 +43,7 @@ typedef enum : NSUInteger {
 - (instancetype)initWithBundleIdentifier:(NSString *)bundleIdentifier {
     self = [super initWithBundleIdentifier:bundleIdentifier];
     if (self) {
-        _shouldDismissAlertsAutomatically = YES;
+        _shouldDismissAlertsAutomatically = NO;
     }
     return self;
 }
