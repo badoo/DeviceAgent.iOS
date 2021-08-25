@@ -20,6 +20,7 @@
 #import "CBXConstants.h"
 #import "XCTest+CBXAdditions.h"
 #import "CBXMachClock.h"
+#import "XCUIElement+TouchSynthesis.h"
 
 typedef enum : NSUInteger {
     SpringBoardAlertHandlerIgnoringAlerts = 0,
@@ -113,20 +114,34 @@ typedef enum : NSUInteger {
     for (NSString *preferableButton in preferableButtons) {
         XCUIElement *button = alert.buttons[preferableButton];
         if ([button exists]) {
-            [button tap];
-            return [NSString stringWithFormat:@"Alert '%@' is found. Tap on the preferable button '%@'.",
-                    alertLabel, preferableButton];
+            NSError *tapEventError = [button synthesizeTapEvent];
+            if (tapEventError) {
+                NSString *errorMessage = [NSString stringWithFormat:@"Failed to synthesize touch event. Error: '%@'",
+                                          [tapEventError localizedDescription]];
+                DDLogDebug(@"%@", errorMessage);
+                return errorMessage;
+            } else {
+                DDLogDebug(@"Successfully synthesized touch event.");
+                return [NSString stringWithFormat:@"Alert '%@' is found. Tap on the preferable button '%@'.",
+                        alertLabel, preferableButton];
+            }
         }
     }
 
     // INFO: Dismiss first button in case preferable button is not found
     XCUIElement *firstButton = alert.buttons.firstMatch;
     NSString *firstButtonLabel = firstButton.label;
-    
-    [firstButton tap];
-    
-    return [NSString stringWithFormat:@"Alert '%@' is found without preferable buttons. Tap on the first button '%@'.",
-            alertLabel, firstButtonLabel];
+
+    NSError *tapEventError = [firstButton synthesizeTapEvent];
+    if (tapEventError) {
+        NSString *errorMessage = [NSString stringWithFormat:@"Failed to synthesize touch event on element with label %@. Error: '%@'",
+        firstButtonLabel, [tapEventError localizedDescription]];
+        DDLogDebug(@"%@", errorMessage);
+        return errorMessage;
+    } else {
+        return [NSString stringWithFormat:@"Alert '%@' is found without preferable buttons. Tap on the first button '%@'.",
+                alertLabel, firstButtonLabel];
+    }
 }
 
 
