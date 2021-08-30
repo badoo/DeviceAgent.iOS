@@ -80,6 +80,34 @@ static CBXScreenshooter *screenshooter = nil;
                   }
               ],
 
+             [CBXRoute post:endpoint(@"/launch_app", 1.0)
+                  withBlock:^(RouteRequest *request,
+                              NSDictionary *data,
+                              RouteResponse *response) {
+                      NSString *bundleId = data[CBX_BUNDLE_ID_KEY] ?: data[@"bundleId"] ?: data[@"bundle_id"];
+                      NSArray *launchArgs = data[CBX_LAUNCH_ARGS_KEY] ?: @[];
+                      NSDictionary *environment = data[CBX_ENVIRONMENT_KEY] ?: @{};
+
+                      XCUIApplication *application = [[XCUIApplication alloc] initWithBundleIdentifier:bundleId];
+
+                      [application terminate];
+                      [application waitForState:XCUIApplicationStateNotRunning timeout:3.0];
+
+                      [application setLaunchArguments:launchArgs];
+                      [application setLaunchEnvironment:environment];
+
+                      [application launch];
+
+                      BOOL appStarted = [application waitForState:XCUIApplicationStateRunningForeground timeout:3.0];
+
+                      if (appStarted) {
+                        [response respondWithJSON:@{@"status" : @"launched"}];
+                      } else {
+                        [response respondWithJSON:@{@"status" : @"NOT launched"}];
+                      }
+                  }
+              ],
+
              [CBXRoute post:endpoint(@"/pid", 1.0) withBlock:^(RouteRequest *request,
                                                                NSDictionary *data,
                                                                RouteResponse *response) {
