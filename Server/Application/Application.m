@@ -99,10 +99,7 @@ static Application *currentApplication;
 
 + (XCUIApplication *)findCurrentApplication
 {
-    NSArray<XCAccessibilityElement *> *activeApplicationElements = [[XCUIDevice.sharedDevice accessibilityInterface] activeApplications];
-    XCAccessibilityElement *element = [activeApplicationElements firstObject];
-    XCUIApplication *app = [self getApplicationFromPID:[element processIdentifier]];
-    return app;
+    return [[[self findCurrentApplications] allObjects] firstObject];
 }
 
 + (NSSet<XCUIApplication *> *)findCurrentApplications
@@ -112,7 +109,12 @@ static Application *currentApplication;
     NSMutableSet *apps = [NSMutableSet set];
 
     for (XCAccessibilityElement *appElement in activeApplicationElements) {
-        [apps addObject:[self getApplicationFromPID:[appElement processIdentifier]]];
+        NSInteger appPID = [appElement processIdentifier];
+        if (appPID == 0){
+            DDLogDebug(@"Skip operation getApplicationFromPID for the current app element %@ due to 0 PID issue.", appElement);
+        } else {
+            [apps addObject:[self getApplicationFromPID:appPID]];
+        }
     }
 
     return apps;
