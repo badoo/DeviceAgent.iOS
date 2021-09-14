@@ -33,7 +33,11 @@
     _typeIdentifier = typeIdentifier;
 
 
-    _shouldUseScreenshotRequest = [(id)testmanagerd respondsToSelector:@selector(_XCT_requestScreenshot:withReply:)];
+    if (@available(iOS 15.0, *)) {
+      _shouldUseScreenshotRequest = YES;
+    } else {
+      _shouldUseScreenshotRequest = NO;
+    }
 
     if (_shouldUseScreenshotRequest) {
       XCTImageEncoding *imageEncoding = [[XCTImageEncoding alloc] initWithUniformTypeIdentifier:typeIdentifier

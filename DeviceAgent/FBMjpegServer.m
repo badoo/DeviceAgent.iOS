@@ -69,11 +69,6 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
 
 - (void)streamScreenshot
 {
-  if (![self.class canStreamScreenshots]) {
-    DDLogError(@"MJPEG server cannot start because the current iOS version is not supported");
-    return;
-  }
-
   NSUInteger framerate = FBMjpegServerFramerate;
   uint64_t timerInterval = (uint64_t)(1.0 / ((0 == framerate || framerate > MAX_FPS) ? MAX_FPS : framerate) * NSEC_PER_SEC);
   uint64_t timeStarted = mach_absolute_time();
@@ -99,16 +94,6 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
       [client writeData:chunk withTimeout:-1 tag:0];
     }
   }
-}
-
-+ (BOOL)canStreamScreenshots
-{
-  static dispatch_once_t onceCanStream;
-  static BOOL result;
-  dispatch_once(&onceCanStream, ^{
-    result = [(NSObject *)[Testmanagerd_CapabilityExchange get] respondsToSelector:@selector(_XCT_requestScreenshotOfScreenWithID:withRect:uti:compressionQuality:withReply:)];
-  });
-  return result;
 }
 
 - (void)didClientConnect:(GCDAsyncSocket *)newClient
