@@ -79,7 +79,11 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
     }
   }
 
-  [self sendScreenshot:[_screenshooter getScreenshotData]];
+  @try {
+    [self sendScreenshot:[_screenshooter getScreenshotData]];
+  } @catch (NSException *exception) {
+    NSLog(@"Screenshot exception: %@, %@", exception.name, exception.reason);
+  }
 
   [self scheduleNextScreenshotWithInterval:timerInterval timeStarted:timeStarted];
 }

@@ -64,8 +64,10 @@
     [_testmanagerd _XCT_requestScreenshot:_screenshotRequest
                                 withReply:^(XCTImage *image, NSError *error){
       if (error != nil) {
-        @throw [CBXException withFormat:@"Cannot take screenshot. Error: %@", [error description]];
+        NSLog(@"Cannot take screenshot. Error: %@", [error description]);
+//        @throw [CBXException withFormat:@"Cannot take screenshot. Error: %@", [error description]];
       }
+
       screenshotData = [image data];
       dispatch_semaphore_signal(sem);
     }];
@@ -76,7 +78,8 @@
                                      compressionQuality:_compression
                                               withReply:^(NSData *data, NSError *error) {
       if (error != nil) {
-        @throw [CBXException withFormat:@"Cannot take screenshot. Error: %@", [error description]];
+        NSLog(@"Cannot take screenshot. Error: %@", [error description]);
+//        @throw [CBXException withFormat:@"Cannot take screenshot. Error: %@", [error description]];
       }
       screenshotData = data;
       dispatch_semaphore_signal(sem);
@@ -86,7 +89,8 @@
   dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)));
 
   if (nil == screenshotData) {
-    @throw [CBXException withFormat:@"Cannot take screenshot from the device"];
+    NSLog(@"Cannot take screenshot. ScreenshotData is nil.");
+//    @throw [CBXException withFormat:@"Cannot take screenshot from the device"];
   }
 
   return screenshotData;

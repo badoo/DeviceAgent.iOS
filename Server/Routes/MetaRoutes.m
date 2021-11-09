@@ -241,8 +241,12 @@ static CBXScreenshooter *screenshooter = nil;
 
                  NSData *screenshotData = [screenshooter getScreenshotData];
 
-                 NSString *screenshot = [screenshotData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-                 [response respondWithJSON:@{@"value": screenshot}];
+                 if (nil == screenshotData) {
+                   [response respondWithJSON:@{@"value": @"Cannot take screenshot from the device"}];
+                 } else {
+                   NSString *screenshot = [screenshotData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+                   [response respondWithJSON:@{@"value": screenshot}];
+                 }
              }]
         ];
 }
