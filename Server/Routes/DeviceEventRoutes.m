@@ -68,6 +68,20 @@
           }
       }],
 
+      [CBXRoute post:endpoint(@"/unlock", 1.0) withBlock:^(RouteRequest *request,
+                                                         NSDictionary *data,
+                                                         RouteResponse *response) {
+          DDLogDebug(@"Will unlock screen touch home button");
+
+          [[XCUIDevice sharedDevice] pressButton:1];
+          [NSThread sleepForTimeInterval:1.0f];
+          [[XCUIDevice sharedDevice] pressButton:1];
+          [NSThread sleepForTimeInterval:1.0f];
+
+          DDLogDebug(@"Have unlocked screen touch home button");
+          [response respondWithJSON:@{}];
+      }],
+
       [CBXRoute post:endpoint(@"/volume", 1.0) withBlock:^(RouteRequest *request,
                                                            NSDictionary *body,
                                                            RouteResponse *response) {
