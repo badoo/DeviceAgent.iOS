@@ -42,7 +42,7 @@ static Application *currentApplication;
     // The private LSApplicationWorkspace API does not work on physical devices
     // so we cannot poll to wait for the application to install.
     NSUInteger attempts = 1;
-    NSUInteger maxAttempts = 12;
+    NSUInteger maxAttempts = 2;
     NSTimeInterval sleepBetween = 5;
     NSTimeInterval start = [[CBXMachClock sharedClock] absoluteTime];
 
