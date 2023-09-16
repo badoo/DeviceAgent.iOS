@@ -608,5 +608,69 @@
       "अनुमति दें"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "“%@” आपकी मोशन और फ़िटनेस ऐक्टिविटी को ऐक्सेस करना चाहता है",
+    "buttons": [
+      "ठीक"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” बैकग्राउंड में VoIP कॉल लेना चाहता है",
+    "buttons": [
+      "ठीक"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” VPN कॉन्फ़िगरेशन जोड़ना चाहता है",
+    "buttons": [
+      "अनुमति न दें"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Apple ID आवश्यक",
+    "buttons": [
+      "अभी नहीं"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "होम स्क्रीन संपादित करें",
+    "buttons": [
+      "ख़ारिज करें",
+      "ठीक"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "कोई SIM उपलब्ध नहीं",
+    "buttons": [
+      "ठीक"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” आपके स्थानीय नेटवर्क पर डिवाइस ढूँढना और उनसे कनेक्ट करना चाहता है",
+    "buttons": [
+      "ठीक"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” आपको गंभीर अलर्ट भेजना चाहता है",
+    "buttons": [
+      "अनुमति दें"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” को ऐक्सेसरी से कनेक्ट होने की अनुमति देने के लिए Bluetooth चालू करें",
+    "buttons": [
+      "द करें"
+    ],
+    "shouldAccept": true
   }
 ]

@@ -522,5 +522,48 @@
       "Permitir"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Adicionar Teclado de Terceiros?",
+    "buttons": [
+      "Agora Não"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Editar Tela de Início",
+    "buttons": [
+      "Descartar",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Nenhum SIM Disponível",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” deseja buscar dispositivos na sua rede local e se conectar a eles",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Ative o Bluetooth para Permitir que “%@” se Conecte a Acessórios",
+    "buttons": [
+      "Fechar"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Edite Telas de Início",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]

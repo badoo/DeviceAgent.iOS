@@ -540,5 +540,75 @@
       "Cho phép"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "“%@” muốn thêm cấu hình VPN",
+    "buttons": [
+      "Từ chối"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "“%@” muốn lọc nội dung mạng",
+    "buttons": [
+      "Từ chối"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Thêm bàn phím bên thứ ba?",
+    "buttons": [
+      "Để sau"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Yêu cầu ID Apple",
+    "buttons": [
+      "Để sau"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Sửa Màn hình Chính",
+    "buttons": [
+      "Bỏ qua"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Không có SIM khả dụng",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” muốn tìm và kết nối với các thiết bị trên mạng cục bộ của bạn",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” muốn gửi cho bạn các cảnh báo quan trọng",
+    "buttons": [
+      "Cho phép"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Bật Bluetooth để cho phép “%@” kết nối với phụ kiện",
+    "buttons": [
+      "Đóng"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Sửa Màn hình chính",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]

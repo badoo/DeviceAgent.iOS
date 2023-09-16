@@ -480,5 +480,55 @@
       "Tillad"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Apple-id kræves",
+    "buttons": [
+      "Ikke nu"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Rediger hjemmeskærm",
+    "buttons": [
+      "Luk",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Intet SIM-kort tilgængeligt",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” vil finde og oprette forbindelse til enheder på dit lokale netværk",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” vil sende dig vigtige advarsler",
+    "buttons": [
+      "Tillad"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Slå Bluetooth til for at tillade “%@” at oprette forbindelse til Tilbehør",
+    "buttons": [
+      "Tillad"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Rediger hjemmeskærme",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]

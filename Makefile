@@ -39,8 +39,15 @@ app-agent:
 #
 # Warnings are treated as errors. GCC_TREAT_WARNINGS_AS_ERRORS=YES
 unit-tests:
+	bin/make/unit-tests.sh "${SIM_NAME}" "${SIM_OS_VERSION}"
+
+ui-tests:
 	bundle update
-	bundle exec bin/make/unit-tests.rb
+	bundle exec bin/make/ui-tests.rb
+
+alerts-ui-tests:
+	bundle update
+	bundle exec bin/make/alerts-ui-tests.rb
 
 # Makes the TestApp.app
 test-app:

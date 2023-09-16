@@ -480,5 +480,62 @@
       "Consenti"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "“%@” vuole filtrare i contenuti di rete",
+    "buttons": [
+      "Non consentire"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Vuoi aggiungere una tastiera di terze parti?",
+    "buttons": [
+      "Non ora"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "È richiesto un ID Apple",
+    "buttons": [
+      "Non ora"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Modifica la schermata Home",
+    "buttons": [
+      "Chiudi",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Nessuna SIM disponibile",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” vorrebbe rilevare i dispositivi sulla tua rete locale e connettersi",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” desidera inviarti avvisi importanti",
+    "buttons": [
+      "Consenti"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Attiva Bluetooth per consentire a “%@” di connettersi agli accessori",
+    "buttons": [
+      "Chiudi"
+    ],
+    "shouldAccept": true
   }
 ]

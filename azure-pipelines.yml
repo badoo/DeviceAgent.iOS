@@ -1,7 +1,8 @@
 variables:
   # When Agent.JobName matches this value (and the git ref is a tag), then
   # built artifacts will be published to Azure Blob Storage.
-  AzurePublishWhen: "Catalina-Xcode-12.4"
+  AzurePublishWhen: "Ventura-Xcode-14.3"
+  EOCompliance-Mac: true
 
 trigger:
   tags:
@@ -22,15 +23,21 @@ jobs:
 - job:
   strategy:
     matrix:
-      Catalina-Xcode-12.2:
-        IMAGE_POOL: 'macOS-10.15'
-        XCODE_VERSION: '12.2'
-      Catalina-Xcode-12.3:
-        IMAGE_POOL: 'macOS-10.15'
-        XCODE_VERSION: '12.3'
-      Catalina-Xcode-12.4:
-        IMAGE_POOL: 'macOS-10.15'
-        XCODE_VERSION: '12.4'
+      Monterey-Xcode-13.4.1:
+        IMAGE_POOL: 'macOS-12'
+        XCODE_VERSION: '13.4.1'
+        SIM_NAME: "iPhone 13"
+        SIM_OS_VERSION: "15.5"
+      Monterey-Xcode-14.2:
+        IMAGE_POOL: 'macOS-12'
+        XCODE_VERSION: '14.2'
+        SIM_NAME: "iPhone 14"
+        SIM_OS_VERSION: "16.2"
+      Ventura-Xcode-14.3:
+        IMAGE_POOL: 'macOS-13'
+        XCODE_VERSION: '14.3'
+        SIM_NAME: "iPhone 14"
+        SIM_OS_VERSION: "16.4"
   pool:
     vmImage: $(IMAGE_POOL)
   timeoutInMinutes: 120
@@ -72,12 +79,21 @@ jobs:
   - script: make test-app
     displayName: "Make test-app"
 
-  - script: make unit-tests
+  - script: make unit-tests SIM_NAME="$(SIM_NAME)" SIM_OS_VERSION="$(SIM_OS_VERSION)"
     displayName: "Make unit-tests"
+    condition: and(succeeded(), eq(variables['IsRunUnitTests'], 'true'))
+
+  - script: make ui-tests
+    displayName: "Make ui-tests"
+    condition: and(succeeded(), eq(variables['IsRunUITests'], 'true'))
+
+  - script: make alerts-ui-tests
+    displayName: "Run alerts UI tests"
+    condition: and(succeeded(), eq(variables['IsRunUITests'], 'true'))
 
   - script: bundle exec bin/ci/cucumber.rb
     displayName: "exec cucumber"
-    condition: eq(variables['IsRunCucumberTests'], 'true')
+    condition: and(succeeded(), eq(variables['IsRunCucumberTests'], 'true'))
 
   - bash: "./bin/ci/az-publish.sh"
     env:

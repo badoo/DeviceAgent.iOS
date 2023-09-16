@@ -181,21 +181,24 @@
   {
     "title": "Activer Dictée?",
     "buttons": [
-      "Pas maintenant"
+      "Pas maintenant",
+      "Plus tard"
     ],
     "shouldAccept": true
   },
   {
     "title": "Activer Dictée",
     "buttons": [
-      "Pas maintenant"
+      "Pas maintenant",
+      "Plus tard"
     ],
     "shouldAccept": true
   },
   {
     "title": "Ajouter un clavier tiers?",
     "buttons": [
-      "Pas maintenant"
+      "Pas maintenant",
+      "Plus tard"
     ],
     "shouldAccept": true
   },
@@ -423,6 +426,62 @@
     "title": "Autoriser « %@ » à suivre votre activité dans les apps et sur les sites Web d’autres entreprises?",
     "buttons": [
       "Autoriser"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "« %@ » souhaite ajouter des configurations de serveur mandataire DNS.",
+    "buttons": [
+      "Autoriser"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Identifiant Apple requis",
+    "buttons": [
+      "Plus tard"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Disposition des icônes",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Aucune carte SIM disponible",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "« %@ » souhaite vous envoyer des alertes critiques",
+    "buttons": [
+      "Autoriser"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Activez Bluetooth pour permettre à « %@ » de se connecter aux accessoires",
+    "buttons": [
+      "Fermer"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Modifier l’écran d’accueil",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Modifier les écrans d’accueil",
+    "buttons": [
+      "OK"
     ],
     "shouldAccept": true
   }

@@ -1,7 +1,52 @@
+### 2.6.0
+
+* Added support of Xcode 14.3.
+
+### 2.5.1
+
+* Added new 'Edit Home Screens' alert handler.
+
+### 2.5.0
+
+* Added support for Xcode 14 and iOS 16.
+* Added new alerts handlers for iOS 16.
+
+### 2.4.5
+
+* Added "Edit Home Screen" notification handler.
+
+### 2.4.4
+
+* Reverted all changes related to headers update from Xcode 13.2 and 13.3.1 to Xcode 13.1.
+* Added handler for exceptions while trying to dismiss SpringBoard alert.
+* Added tests for checking alerts handling.
+* Fixed minor issues.
+
+### 2.4.3
+
+* Added support of Xcode 13.3.
+* Updated dependencies.
+
+### 2.4.2
+
+* Added support of Xcode 13.2.1.
+
+### 2.4.1
+
+* Added support of Xcode 13.1.
+* Added handling of "Apple ID Required" notification.
+* Updated calabash.xcframework.
+
+### 2.4.0
+
+* Added support of Xcode 13.0 and iOS 15.
+
 ### 2.3.0
 
 * Added depndencies as xcframework format.
 * Added supporting of Apple Silicon arm64 platform for simulator.
+* Added missed alerts localiztions from Xcode 12.5.
+* Fixed issue with tapping on elements in horizontal screen orientation.
 
 ### 2.2.7
 

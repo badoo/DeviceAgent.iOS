@@ -573,5 +573,69 @@
       "Tillat"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Vil du tillate at %@ bruker posisjonen din selv når du ikke bruker appen?",
+    "buttons": [
+      "Tillat"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Vil du også tillate at %@ bruker posisjonen din selv når du ikke bruker appen?",
+    "buttons": [
+      "Tillat"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Apple‑ID kreves",
+    "buttons": [
+      "Ikke nå"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Rediger Hjem-skjerm",
+    "buttons": [
+      "Lukk",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "SIM mangler",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "%@ ber om tillatelse til å finne og koble til enheter på det lokale nettverket ditt",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "%@ vil sende deg viktige varsler",
+    "buttons": [
+      "Tillat"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Slå på Bluetooth for å tillate at «%@» kobler til Tilbehør",
+    "buttons": [
+      "Lukk"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Rediger Hjem-skjermer",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]

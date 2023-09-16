@@ -451,5 +451,48 @@
       "Izinkan"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "ID Apple Diperlukan",
+    "buttons": [
+      "Nanti"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Edit Layar Utama",
+    "buttons": [
+      "Tutup",
+      "OKE"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Tidak Ada SIM yang Tersedia",
+    "buttons": [
+      "OKE"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” ingin menemukan dan terhubung ke perangkat di jaringan lokal Anda",
+    "buttons": [
+      "OKE"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” Ingin Mengirimi Anda Peringatan Penting",
+    "buttons": [
+      "Izinkan"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Nyalakan Bluetooth untuk Mengizinkan “%@” Terhubung ke Aksesori",
+    "buttons": [
+      "Tutup"
+    ],
+    "shouldAccept": true
   }
 ]

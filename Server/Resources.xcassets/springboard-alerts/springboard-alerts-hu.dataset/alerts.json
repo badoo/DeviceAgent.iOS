@@ -34,7 +34,8 @@
   {
     "title": "Szeretné engedélyezni a(z) „%@” számára a Face ID használatát?",
     "buttons": [
-      "Tiltás"
+      "Tiltás",
+      "Nem engedélyezem"
     ],
     "shouldAccept": false
   },
@@ -139,14 +140,16 @@
   {
     "title": "Új beállítások állnak rendelkezésre. Szeretne most frissíteni?",
     "buttons": [
-      "Ne most"
+      "Ne most",
+      "Később"
     ],
     "shouldAccept": false
   },
   {
     "title": "Szolgáltatói beállítások frissítése",
     "buttons": [
-      "Ne most"
+      "Ne most",
+      "Később"
     ],
     "shouldAccept": false
   },
@@ -478,7 +481,8 @@
     "buttons": [
       "Engedélyezés mindig",
       "Engedélyezés",
-      "Az alkalmazás használata közben"
+      "Az alkalmazás használata közben",
+      "Az app használata közben"
     ],
     "shouldAccept": true
   },
@@ -514,6 +518,112 @@
     "title": "Engedélyezi a(z) „%@” számára, hogy kövesse az Ön tevékenységét más vállalatok alkalmazásaiban és webhelyein?",
     "buttons": [
       "Engedélyezés"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Engedélyezi, hogy a(z) „%@” használja az Ön helyzetét akkor is, ha nem használja az appot?",
+    "buttons": [
+      "Engedélyezés"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "A(z) „%@” adatokat akar elérhetővé tenni közeli Bluetooth-eszközök számára akkor is, amikor Ön nem használja az appot",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Ez lehetővé teszi, hogy a(z) „%@” megkeresse és csatlakozzon a Bluetooth-kiegészítőkhöz. Előfordulhat, hogy ez az app Bluetooth-t is használ annak megállapításához, hogy Ön a közelben tartózkodik-e.",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "A(z) „%@” szűrni szeretné a hálózati tartalmat",
+    "buttons": [
+      "Tiltás"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Apple ID szükséges",
+    "buttons": [
+      "Ne most"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Főképernyő szerkesztése",
+    "buttons": [
+      "Bezárás",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Szeretné a következőt Sirivel használni: „%@”?",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "A(z) „%@” Bluetootht szeretné használni, miközben az használatban van",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "A(z) „%@” a Bluetootht szeretné használni",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Ez lehetővé teszi, hogy a(z) „%@” megkeresse és csatlakozzon a Bluetooth-kiegészítőkhöz. Előfordulhat, hogy ez az app Bluetootht is használ annak megállapításához, hogy Ön a közelben tartózkodik-e.",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Nincs elérhető SIM-kártya",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "A(z) „%@” eszközöket szeretne keresni a helyi hálózatán, és csatlakozni szeretne hozzájuk",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "A(z) „%@” kritikus jelzéseket szeretne küldeni",
+    "buttons": [
+      "Engedélyezés"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Kapcsolja be a Bluetootht, hogy a(z) „%@” csatlakozni tudjon kiegészítőkhöz",
+    "buttons": [
+      "Bezárás"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Főképernyők szerkesztése",
+    "buttons": [
+      "OK"
     ],
     "shouldAccept": true
   }

@@ -433,5 +433,55 @@
       "Permiteți"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "ID Apple necesar",
+    "buttons": [
+      "Nu acum"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Editați ecranul principal",
+    "buttons": [
+      "Închideți",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Niciun SIM disponibil",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” ar dori să găsească și să se conecteze la dispozitivele din rețeaua locală",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” ar dori să vă trimită alerte critice",
+    "buttons": [
+      "Permiteți"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Activați Bluetooth pentru a permite conectarea “%@” la accesorii",
+    "buttons": [
+      "Închide"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Editați ecranele principale",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]

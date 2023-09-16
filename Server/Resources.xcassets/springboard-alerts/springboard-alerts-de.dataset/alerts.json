@@ -251,7 +251,8 @@
   {
     "title": "„%1$@“ möchte auf %2$@-Accounts zugreifen",
     "buttons": [
-      "Erlauben"
+      "Erlauben",
+      "OK"
     ],
     "shouldAccept": true
   },
@@ -717,6 +718,56 @@
     "title": "Darf „%@“ deine Aktivitäten in Apps und auf Websites anderer Unternehmen erfassen?",
     "buttons": [
       "Erlauben"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Apple‑ID erforderlich",
+    "buttons": [
+      "Später"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Home-Bildschirm bearbeiten",
+    "buttons": [
+      "Schließen",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Keine SIM verfügbar",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "„%@“ möchte Geräte in deinem lokalen Netzwerk finden und eine Verbindung herstellen",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "„%@“ möchte dir kritische Hinweise senden",
+    "buttons": [
+      "Erlauben"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Bluetooth aktivieren, damit „%@“ die Verbindung zum Zubehör herstellen kann",
+    "buttons": [
+      "Schließen"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Home-Bildschirme bearbeiten",
+    "buttons": [
+      "OK"
     ],
     "shouldAccept": true
   }

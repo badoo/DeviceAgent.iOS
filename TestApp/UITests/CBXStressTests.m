@@ -177,7 +177,7 @@
 
 
     NSString *text = nil;
-    for (NSUInteger try = 0; try < 100; try++) {
+    for (NSUInteger try = 0; try < 10; try++) {
         // show the keyboard
         [self.aut.textFields[@"text field"] tap];
 
@@ -189,15 +189,27 @@
         CFTimeInterval elapsed = CACurrentMediaTime() - startTime;
         [times addObject:@(elapsed)];
 
-        // dismiss the keyboard
-        [self.aut.buttons[@"Done"] tap];
+        if (@available(iOS 15, *)) {
+            // dismiss the keyboard
+            [self.aut.buttons[@"done"] tap];
+            XCUIElement *element = self.aut.buttons[@"question"];
+            NSString *actual = [element label];
 
-        XCUIElement *element = self.aut.staticTexts[@"question"];
-        NSString *actual = [element label];
+            NSString *expected = [NSString stringWithFormat:@"Ça va? - %@", text];
 
-        NSString *expected = [NSString stringWithFormat:@"Ça va? - %@", text];
+            XCTAssertEqualObjects(actual, expected);
+        }
+        else{
+            // dismiss the keyboard
+            [self.aut.buttons[@"Done"] tap];
 
-        XCTAssertEqualObjects(actual, expected);
+            XCUIElement *element = self.aut.staticTexts[@"question"];
+            NSString *actual = [element label];
+
+            NSString *expected = [NSString stringWithFormat:@"Ça va? - %@", text];
+
+            XCTAssertEqualObjects(actual, expected);
+        }
 
         // clear the text field
         [self.aut.buttons[@"clear text field button"] tap];

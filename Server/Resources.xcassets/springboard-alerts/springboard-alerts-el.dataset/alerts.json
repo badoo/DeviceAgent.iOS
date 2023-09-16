@@ -563,5 +563,55 @@
       "Ναι"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Απαιτείται Apple ID",
+    "buttons": [
+      "Όχι τώρα"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Αλλαγές στην οθόνη Αφετηρίας",
+    "buttons": [
+      "Απόρριψη",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Δεν υπάρχει κάρτα SIM",
+    "buttons": [
+      "ΟΚ"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Αίτημα από «%@» για εύρεση και σύνδεση σε συσκευές στο τοπικό σας δίκτυο",
+    "buttons": [
+      "ΟΚ"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Αίτημα από «%@» για να σας στέλνει κρίσιμες ειδοποιήσεις",
+    "buttons": [
+      "Ναι"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Ενεργοποίηση Bluetooth για σύνδεση του «%@» με αξεσουάρ",
+    "buttons": [
+      "Κλείσιμο"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Επεξεργασία οθονών Αφετηρίας",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]

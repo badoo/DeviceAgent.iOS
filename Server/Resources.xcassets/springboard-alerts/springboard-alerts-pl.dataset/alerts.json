@@ -474,5 +474,54 @@
       "Pozwól"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Wymagany Apple ID",
+    "buttons": [
+      "Nie teraz"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Edycja ekranu początkowego",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Brak dostępnej karty SIM",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "„%@” chce znajdować urządzenia w sieci lokalnej i łączyć się z nimi",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "„%@” chce wysyłać Ci alerty krytyczne",
+    "buttons": [
+      "Pozwalaj"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Aby używać akcesoriów z „%@”, włącz Bluetooth.",
+    "buttons": [
+      "Zamknij"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Edycja stron ekranu początkowego",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]

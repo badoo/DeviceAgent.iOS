@@ -454,5 +454,68 @@
       "Permitir"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Actualización de configuración del operador",
+    "buttons": [
+      "Ahora no"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "ID de Apple necesario",
+    "buttons": [
+      "Ahora no"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Editar pantalla de inicio",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "¿Quieres usar “%@” con Siri?",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Sin SIM disponible",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "%@ quiere buscar y conectarse a dispositivos en tu red local",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” quiere enviarte alertas críticas",
+    "buttons": [
+      "Permitir"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Activa Bluetooth para permitir que “%@” se conecte a los accesorios",
+    "buttons": [
+      "Cerrar"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Editar pantallas de inicio",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]

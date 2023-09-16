@@ -517,5 +517,62 @@
       "Benarkan"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Seting baharu tersedia. Adakah anda mahu mengemas kininya sekarang?",
+    "buttons": [
+      "Bukan Sekarang"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Apple ID Diperlukan",
+    "buttons": [
+      "Bukan Sekarang"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Edit Skrin Utama",
+    "buttons": [
+      "Tutup",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Tiada SIM Tersedia",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” mahu mencari dan bersambung kepada peranti pada rangkaian setempat anda",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” Mahu Menghantar Isyarat Kritikal Kepada Anda",
+    "buttons": [
+      "Benarkan"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Benarkan “%@” mengemas kini data kesihatan anda.",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Aktifkan Bluetooth untuk Membenarkan “%@” Bersambung ke Aksesori",
+    "buttons": [
+      "Tutup"
+    ],
+    "shouldAccept": true
   }
 ]

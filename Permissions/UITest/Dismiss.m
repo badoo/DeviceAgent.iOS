@@ -1,4 +1,8 @@
-#import <XCTest/XCTest.h>
+#import "XCTest+CBXAdditions.h"
+#import "CBXServerUnitTestUmbrellaHeader.h"
+#import "SpringBoardAlerts.h"
+#import "SpringBoardAlert.h"
+#import "SpringBoard.h"
 
 
 @interface Dismiss : XCTestCase
@@ -60,7 +64,6 @@
 //
 // http://tinyurl.com/jgsnaxb
 - (void)testDismiss {
-
     [self addUIInterruptionMonitorWithDescription:@"Outer Handler" handler:^BOOL(XCUIElement *alert) {
         BOOL handled = NO;
         XCUIElement *allowButton = alert.buttons[@"Allow"];
@@ -85,6 +88,18 @@
     [self waitUntilElementExists:element withTimeout:5];
     [element tap];
 
+    element = self.app.tables[@"table"].cells[@"health kit"];
+    [self waitUntilElementExists:element withTimeout:5];
+    [element tap];
+    
+    [NSThread sleepForTimeInterval:5.0f];
+    
+    NSArray<XCUIElement *>* buttons = self.app.buttons.allElementsBoundByIndex;
+    NSArray<XCUIElement *>* switches = self.app.switches.allElementsBoundByIndex;
+
+    [switches[0] tap];
+    [buttons[1] tap];
+    
     element = self.app.tables[@"table"].cells[@"dog food"];
     [self waitUntilElementExists:element withTimeout:120];
     [element tap];

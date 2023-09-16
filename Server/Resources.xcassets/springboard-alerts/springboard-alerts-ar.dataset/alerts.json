@@ -453,5 +453,83 @@
       "السماح"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "تحديث إعدادات شركة الاتصالات",
+    "buttons": [
+      "ليس الآن"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "هل تريد تمكين الإملاء؟",
+    "buttons": [
+      "ليس الآن"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "هل تريد إضافة لوحة المفاتيح التابعة لجهة خارجية؟",
+    "buttons": [
+      "ليس الآن"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "مطلوب Apple ID",
+    "buttons": [
+      "ليس الآ"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "تحرير الشاشة الرئيسية",
+    "buttons": [
+      "استبعاد",
+      "موافق"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "هل ترغب بالسماح لـ \"%@\" باستخدام بصمة الوجه؟",
+    "buttons": [
+      "عدم السماح"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "لا توجد شريحة",
+    "buttons": [
+      "موافق"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "يرغب \"%@\" في العثور على الأجهزة على شبكتك المحلية والاتصال بها",
+    "buttons": [
+      "موافق"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "يرغب \"%@\" في إرسال التنبيهات الحرجة إليك",
+    "buttons": [
+      "السماح"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "تشغيل الـ Bluetooth يسمح \"%@\" بالاتصال بالملحقات",
+    "buttons": [
+      "إغلاق"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "تحرير الشاشات الرئيسية",
+    "buttons": [
+      "موافق"
+    ],
+    "shouldAccept": true
   }
 ]

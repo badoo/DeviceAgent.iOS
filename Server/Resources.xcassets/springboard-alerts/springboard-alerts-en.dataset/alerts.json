@@ -476,5 +476,48 @@
       "Allow"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Apple ID Required",
+    "buttons": [
+      "Not Now"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Edit Home Screen",
+    "buttons": [
+      "Dismiss",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "No SIM Available",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” would like to find and connect to devices on your local network",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Turn On Bluetooth to Allow “%@” to Connect to Accessories",
+    "buttons": [
+      "Close"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Edit Home Screens",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]

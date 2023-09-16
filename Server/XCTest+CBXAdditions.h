@@ -12,11 +12,13 @@
 #import "XCUIApplication.h"
 #import "XCApplicationQuery.h"
 #import "XCUIElement.h"
-#import "XCUIHitPointResult.h"
 #import "XCUIDevice.h"
 #import "XCUIApplicationStateTypedef.h"
+#import "XCTestCore/XCTest.h"
+#import "XCUIAutomation/XCUIElementQuery.h"
 #endif
 
+#import "XCUIHitPointResult.h"
 #import "CBXConstants.h"
 
 // Defined in XCTAutomationSupport framework, so it is safe to import

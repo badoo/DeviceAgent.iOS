@@ -503,5 +503,62 @@
       "İzin Ver"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Üçüncü Parti Klavye Eklensin mi?",
+    "buttons": [
+      "Sonra"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Apple Kimliği Gerekli",
+    "buttons": [
+      "Sonra"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Ana Ekranı Düzenle",
+    "buttons": [
+      "Kapat",
+      "Tamam"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Kullanılabilir SIM Yok",
+    "buttons": [
+      "Tamam"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” yerel ağınızdaki aygıtları bulmak ve onlara bağlanmak istiyor",
+    "buttons": [
+      "Tamam"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” Size Kritik Uyarılar Göndermek İstiyor",
+    "buttons": [
+      "İzin Ver"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "“%@” Öğesinin Aksesuarlara Bağlanmasına İzin Vermek için Bluetooth’u Aç",
+    "buttons": [
+      "Kapat"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Ana Ekranları Düzenle",
+    "buttons": [
+      "Tamam"
+    ],
+    "shouldAccept": true
   }
 ]

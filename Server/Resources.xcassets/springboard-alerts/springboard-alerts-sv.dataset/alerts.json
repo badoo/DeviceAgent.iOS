@@ -426,5 +426,55 @@
       "Tillåt"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Apple-ID krävs",
+    "buttons": [
+      "Inte nu"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Ändra hemskärmen",
+    "buttons": [
+      "Avfärda",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Inget SIM-kort tillgängligt",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "”%@” vill hitta och ansluta till enheter i ditt lokala nätverk",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "”%@” vill skicka viktiga varningar till dig",
+    "buttons": [
+      "Tillåt"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Slå på Bluetooth om du vill låta ”%@” ansluta till tillbehör",
+    "buttons": [
+      "Stäng"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Ändra hemskärmar",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]

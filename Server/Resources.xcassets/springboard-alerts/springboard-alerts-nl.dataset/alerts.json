@@ -41,7 +41,8 @@
   {
     "title": "Wil je toestaan dat %@ Face ID gebruikt?",
     "buttons": [
-      "Weiger"
+      "Weiger",
+      "Sta niet toe"
     ],
     "shouldAccept": false
   },
@@ -181,14 +182,16 @@
   {
     "title": "Er zijn nieuwe instellingen beschikbaar. Wil je ze nu bijwerken?",
     "buttons": [
-      "Nu niet"
+      "Nu niet",
+      "Niet nu"
     ],
     "shouldAccept": false
   },
   {
     "title": "Update voor aanbiederinstellingen",
     "buttons": [
-      "Nu niet"
+      "Nu niet",
+      "Niet nu"
     ],
     "shouldAccept": false
   },
@@ -513,6 +516,77 @@
     "title": "Toestaan dat %@ je activiteit volgt in apps en op websites van andere bedrijven?",
     "buttons": [
       "Sta toe"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Apple ID vereist",
+    "buttons": [
+      "Niet nu"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Wijzig beginscherm",
+    "buttons": [
+      "Sluit",
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Geen simkaart beschikbaar",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "%@ wil apparaten op je lokale netwerk zoeken en er verbinding mee maken",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Dicteerfunctie inschakelen?",
+    "buttons": [
+      "Niet nu"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Schakel dicteerfunctie in",
+    "buttons": [
+      "Niet nu"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "%@ wil je kritieke meldingen sturen",
+    "buttons": [
+      "Sta toe"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Schakel Bluetooth in om %@ verbinding te laten maken met accessoires",
+    "buttons": [
+      "Sluit"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "%@ wil je kritieke waarschuwingen sturen",
+    "buttons": [
+      "Sta toe"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Wijzig beginschermen",
+    "buttons": [
+      "OK"
     ],
     "shouldAccept": true
   }

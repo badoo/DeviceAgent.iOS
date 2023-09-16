@@ -19,7 +19,8 @@
 // Licensed under the MIT license.
  
 #import <Foundation/Foundation.h>
-#import "XCTest/XCTestCase.h"
+#import <XCTestCore/XCTestCase.h>
+#import <XCTestCore/XCTest.h>
 
 @class _XCTestCaseImplementation;
 
@@ -36,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Test Case that will never fail or stop from running in case of failure
  */
-@interface FBFailureProofTestCase : XCTestCase
+@interface FBFailureProofTestCase : XCTestCase;
 @end
 
 NS_ASSUME_NONNULL_END

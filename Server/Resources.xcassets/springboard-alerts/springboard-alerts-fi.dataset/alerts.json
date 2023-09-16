@@ -446,5 +446,75 @@
       "Salli"
     ],
     "shouldAccept": true
+  },
+  {
+    "title": "Saavatko %[tt]@-widgetit käyttää sijaintiasi?",
+    "buttons": [
+      "Salli"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "%1$@ haluaa käyttää %2$[tt]@-tilejä",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Vaaditaan Apple ID",
+    "buttons": [
+      "Ei nyt"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "Muokkaa Koti-valikkoa",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": false
+  },
+  {
+    "title": "%@ haluaa käyttää Apple Musicia, musiikki- ja videotoimintaasi sekä mediakirjastoasi",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Ei SIM-korttia",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "%@ haluaa etsiä lähiverkossasi olevia laitteita ja yhdistää niihin",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "%@ haluaa lähettää sinulle kriittisiä varoituksia",
+    "buttons": [
+      "Salli"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Laita Bluetooth päälle, jos sallit, että %@ voi yhdistää lisälaitteisiin",
+    "buttons": [
+      "Sulje"
+    ],
+    "shouldAccept": true
+  },
+  {
+    "title": "Muokkaa Koti-valikkoja",
+    "buttons": [
+      "OK"
+    ],
+    "shouldAccept": true
   }
 ]
