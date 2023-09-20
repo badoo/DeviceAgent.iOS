@@ -35,8 +35,24 @@ static NSArray *axAttributes;
     @"elementType",
     @"frame",
   ];
-  NSSet *attributes = [[XCElementSnapshot class] axAttributesForElementSnapshotKeyPaths:propertyNames
-                                                                                isMacOS:NO];
+
+  Class klass = NSClassFromString(@"XCElementSnapshot");
+  SEL selector = NSSelectorFromString(@"axAttributesForElementSnapshotKeyPaths:isMacOS:");
+  NSMethodSignature *signature = [klass methodSignatureForSelector:selector];
+  NSInvocation *invocation;
+
+  invocation = [NSInvocation invocationWithMethodSignature:signature];
+  invocation.target = klass;
+  invocation.selector = selector;
+
+  [invocation setArgument:&propertyNames atIndex:2];
+  BOOL isMacOS = NO;
+  [invocation setArgument:&isMacOS atIndex:3];
+  [invocation invoke];
+
+  NSSet *attributes;
+  [invocation getReturnValue:&attributes];
+
   axAttributes = [attributes allObjects];
 }
 

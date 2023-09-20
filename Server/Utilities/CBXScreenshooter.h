@@ -1,7 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
-#import "XCTMessagingRole_CapabilityExchange-Protocol.h"
+#import "CBX-XCTest-Umbrella.h"
+
+@protocol XCTMessagingRole_CapabilityExchange;
 
 @interface CBXScreenshooter : NSObject
 - (instancetype)initWithTestmanagerd:(id<XCTMessagingRole_CapabilityExchange>)testmanagerd

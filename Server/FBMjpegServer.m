@@ -45,7 +45,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
     _screenshooter = [[CBXScreenshooter alloc] initWithTestmanagerd:[Testmanagerd_CapabilityExchange get]
                                                           displayID:[[XCUIScreen mainScreen] displayID]
                                                         compression:1.0f
-                                                     typeIdentifier:(__bridge id)kUTTypeJPEG
+                                                     typeIdentifier:@"JPEG" //(__bridge id)kUTTypeJPEG
     ];
   }
   return self;

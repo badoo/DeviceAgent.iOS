@@ -11,7 +11,7 @@ static NSUInteger const CBX_DEFAULT_SERVER_PORT = 27753;
 static NSUInteger const CBX_DEFAULT_MJPEG_PORT = 27754;
 
 static NSUInteger FBMjpegServerScreenshotQuality = 100;
-static NSUInteger FBMjpegServerFramerate = 4;
+static NSUInteger FBMjpegServerFramerate = 5;
 static NSUInteger FBScreenshotQuality = 1;  
 static NSUInteger FBMjpegScalingFactor = 50;
 

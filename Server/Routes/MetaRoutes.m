@@ -48,7 +48,7 @@ static CBXScreenshooter *screenshooter = nil;
         screenshooter = [[CBXScreenshooter alloc] initWithTestmanagerd:[Testmanagerd_CapabilityExchange get]
                                                               displayID:[[XCUIScreen mainScreen] displayID]
                                                             compression:1.0f
-                                                         typeIdentifier:(__bridge id)kUTTypePNG
+                                                         typeIdentifier:@"PNG" //(__bridge id)kUTTypePNG
         ];
     });
 }

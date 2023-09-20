@@ -69,6 +69,18 @@
 		1B9DD55328EEB21400F1AAB2 /* CBX-XCTest-Umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F5A612C120482C170018C107 /* CBX-XCTest-Umbrella.h */; };
 		1B9DD55428EEB21600F1AAB2 /* CBX-XCTest-Umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F5A612C120482C170018C107 /* CBX-XCTest-Umbrella.h */; };
 		1B9DD55528EEB21700F1AAB2 /* CBX-XCTest-Umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F5A612C120482C170018C107 /* CBX-XCTest-Umbrella.h */; };
+		1F1D9EF12AB8764A003C1260 /* FBTCPSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1D9EEE2AB87643003C1260 /* FBTCPSocket.h */; };
+		1F1D9EF22AB8764D003C1260 /* FBTCPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D9EEF2AB87643003C1260 /* FBTCPSocket.m */; };
+		1F1D9EF62AB87905003C1260 /* XCUIElement+TouchSynthesis.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1D9EF32AB87875003C1260 /* XCUIElement+TouchSynthesis.h */; };
+		1F1D9EF72AB8793C003C1260 /* XCUIElement+TouchSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D9EF42AB87875003C1260 /* XCUIElement+TouchSynthesis.m */; };
+		1F1D9EF82AB87955003C1260 /* CBXScreenshooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D9EEC2AB5C261003C1260 /* CBXScreenshooter.m */; };
+		1F1D9EF92AB87966003C1260 /* CBXScreenshooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1D9EEB2AB5C261003C1260 /* CBXScreenshooter.h */; };
+		1F8EDBB72AB8F34A000D81ED /* FBMjpegServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8EDBB52AB8F34A000D81ED /* FBMjpegServer.h */; };
+		1F8EDBB82AB8F34A000D81ED /* FBMjpegServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8EDBB62AB8F34A000D81ED /* FBMjpegServer.m */; };
+		1F8EDBB92AB8F8CE000D81ED /* CBXScreenshooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D9EEC2AB5C261003C1260 /* CBXScreenshooter.m */; };
+		1F8EDBBA2AB8F8CF000D81ED /* CBXScreenshooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D9EEC2AB5C261003C1260 /* CBXScreenshooter.m */; };
+		1F8EDBBB2AB8F8D9000D81ED /* CBXScreenshooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1D9EEB2AB5C261003C1260 /* CBXScreenshooter.h */; };
+		1F8EDBBC2AB8F8DA000D81ED /* CBXScreenshooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1D9EEB2AB5C261003C1260 /* CBXScreenshooter.h */; };
 		3B5444E52498241500532AE0 /* QuerySpecifierByDescendantType.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B81F693240E937F00825603 /* QuerySpecifierByDescendantType.h */; };
 		3B5444EA249838AC00532AE0 /* QuerySpecifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5444E02498216000532AE0 /* QuerySpecifierTests.m */; };
 		3B81F695240E952F00825603 /* QuerySpecifierByDescendantType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81F694240E952F00825603 /* QuerySpecifierByDescendantType.m */; };
@@ -1564,6 +1576,14 @@
 		1B9DD53628EDBEF000F1AAB2 /* XCUIDefaultIssueHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCUIDefaultIssueHandler.h; sourceTree = "<group>"; };
 		1B9DD53728EDBEF000F1AAB2 /* XCPointerEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCPointerEvent.h; sourceTree = "<group>"; };
 		1B9DD53828EDBEF000F1AAB2 /* XCUIElementQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCUIElementQuery.h; sourceTree = "<group>"; };
+		1F1D9EEB2AB5C261003C1260 /* CBXScreenshooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBXScreenshooter.h; sourceTree = "<group>"; };
+		1F1D9EEC2AB5C261003C1260 /* CBXScreenshooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBXScreenshooter.m; sourceTree = "<group>"; };
+		1F1D9EEE2AB87643003C1260 /* FBTCPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTCPSocket.h; sourceTree = "<group>"; };
+		1F1D9EEF2AB87643003C1260 /* FBTCPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTCPSocket.m; sourceTree = "<group>"; };
+		1F1D9EF32AB87875003C1260 /* XCUIElement+TouchSynthesis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCUIElement+TouchSynthesis.h"; sourceTree = "<group>"; };
+		1F1D9EF42AB87875003C1260 /* XCUIElement+TouchSynthesis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCUIElement+TouchSynthesis.m"; sourceTree = "<group>"; };
+		1F8EDBB52AB8F34A000D81ED /* FBMjpegServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMjpegServer.h; sourceTree = "<group>"; };
+		1F8EDBB62AB8F34A000D81ED /* FBMjpegServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMjpegServer.m; sourceTree = "<group>"; };
 		3B5444E02498216000532AE0 /* QuerySpecifierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierTests.m; sourceTree = "<group>"; };
 		3B81F693240E937F00825603 /* QuerySpecifierByDescendantType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuerySpecifierByDescendantType.h; sourceTree = "<group>"; };
 		3B81F694240E952F00825603 /* QuerySpecifierByDescendantType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierByDescendantType.m; sourceTree = "<group>"; };
@@ -3059,6 +3079,10 @@
 		F55F83B61C6DDF1300A945C8 /* Server */ = {
 			isa = PBXGroup;
 			children = (
+				1F8EDBB52AB8F34A000D81ED /* FBMjpegServer.h */,
+				1F8EDBB62AB8F34A000D81ED /* FBMjpegServer.m */,
+				1F1D9EEE2AB87643003C1260 /* FBTCPSocket.h */,
+				1F1D9EEF2AB87643003C1260 /* FBTCPSocket.m */,
 				F53BECCC210211420016C035 /* XCUIApplicationStateTypedef.h */,
 				F547174D204939DA0024AA0B /* XCTest+CBXAdditions.h */,
 				F547174F20496A200024AA0B /* XCTest+CBXAdditions.m */,
@@ -3169,6 +3193,8 @@
 				F547EEB11E43796A000FC160 /* CBXWaiter.m */,
 				F533496A1F3AFED7004138C7 /* CBXOrientation.h */,
 				F533496B1F3AFED7004138C7 /* CBXOrientation.m */,
+				1F1D9EEB2AB5C261003C1260 /* CBXScreenshooter.h */,
+				1F1D9EEC2AB5C261003C1260 /* CBXScreenshooter.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -3231,6 +3257,8 @@
 		F5870B3A1CF0BEFF00B3376C /* EventSynthesis */ = {
 			isa = PBXGroup;
 			children = (
+				1F1D9EF32AB87875003C1260 /* XCUIElement+TouchSynthesis.h */,
+				1F1D9EF42AB87875003C1260 /* XCUIElement+TouchSynthesis.m */,
 				F5870B3B1CF0BEFF00B3376C /* CBXTouchEvent.h */,
 				F5870B3C1CF0BEFF00B3376C /* CBXTouchEvent.m */,
 				F5870B3D1CF0BEFF00B3376C /* TouchPath.h */,
@@ -3765,6 +3793,7 @@
 				843A0D5D26B8DB92001CF302 /* XCTSerializedTransportWrapper.h in Headers */,
 				8479D82426F8D37600F6EFDA /* DTXMessenger-Protocol.h in Headers */,
 				843A0BAB26B8DB91001CF302 /* XCTAggregateSuiteRunStatistics.h in Headers */,
+				1F8EDBBB2AB8F8D9000D81ED /* CBXScreenshooter.h in Headers */,
 				843A0D6926B8DB92001CF302 /* XCTMemoryMarker.h in Headers */,
 				843A0D4D26B8DB92001CF302 /* _XCTTestIdentifierPlaceholder.h in Headers */,
 				843A0D0F26B8DB92001CF302 /* XCTestExpectation.h in Headers */,
@@ -3996,6 +4025,7 @@
 				47C26446271F18DA006EF0B9 /* DTXConnection.h in Headers */,
 				47C264F0271F1926006EF0B9 /* XCTTestIdentifierSetBuilder.h in Headers */,
 				47C264C6271F1926006EF0B9 /* XCTCPUMetric.h in Headers */,
+				1F8EDBBC2AB8F8DA000D81ED /* CBXScreenshooter.h in Headers */,
 				47C2654A271F1926006EF0B9 /* XCTMemoryMetric.h in Headers */,
 				47C26492271F1926006EF0B9 /* XCTTestIdentifierSet.h in Headers */,
 				47C2652A271F1926006EF0B9 /* XCTSkippedTestContext.h in Headers */,
@@ -4059,6 +4089,7 @@
 				843A0D5226B8DB92001CF302 /* XCTSourceCodeFrame.h in Headers */,
 				F5A14DE51E02CF84001A0037 /* CBLSApplicationWorkspace.h in Headers */,
 				843A0D2A26B8DB92001CF302 /* DTXConnection-XCTestAdditions.h in Headers */,
+				1F1D9EF92AB87966003C1260 /* CBXScreenshooter.h in Headers */,
 				843A0C5C26B8DB91001CF302 /* XCTStorageMetric.h in Headers */,
 				843A0B8426B8DB90001CF302 /* XCTMessagingRole_CrashReporting-Protocol.h in Headers */,
 				843A0C9826B8DB92001CF302 /* XCTDaemonTelemetryLogger.h in Headers */,
@@ -4153,6 +4184,7 @@
 				843A0D6426B8DB92001CF302 /* XCTRepetitionPolicy.h in Headers */,
 				843A0D8826B8DB93001CF302 /* XCDebugLogDelegate-Protocol.h in Headers */,
 				8479D82326F8D37600F6EFDA /* DTXMessenger-Protocol.h in Headers */,
+				1F1D9EF12AB8764A003C1260 /* FBTCPSocket.h in Headers */,
 				843A0BF626B8DB91001CF302 /* XCTMessagingRole_ProtectedResourceAuthorization-Protocol.h in Headers */,
 				843A0CF826B8DB92001CF302 /* XCTMessagingRole_SignpostRequesting-Protocol.h in Headers */,
 				843A0D0E26B8DB92001CF302 /* XCTestExpectation.h in Headers */,
@@ -4231,6 +4263,7 @@
 				843A0B7A26B8DB90001CF302 /* XCTWaiter.h in Headers */,
 				843A0BA826B8DB91001CF302 /* XCTestObserver.h in Headers */,
 				843A0C0026B8DB91001CF302 /* XCTMessagingRole_UIAutomationEventReporting-Protocol.h in Headers */,
+				1F1D9EF62AB87905003C1260 /* XCUIElement+TouchSynthesis.h in Headers */,
 				DD6297F22A22BF9500E36189 /* XCTMessagingRole_UIApplicationStateUpdating-Protocol.h in Headers */,
 				843A0BC626B8DB91001CF302 /* _XCTestCaseInterruptionException.h in Headers */,
 				843A0BD826B8DB91001CF302 /* XCTestConfigurationLoader.h in Headers */,
@@ -4273,6 +4306,7 @@
 				F55F81971C6DD07500A945C8 /* MultipartMessageHeader.h in Headers */,
 				F55F81951C6DD07500A945C8 /* MultipartFormDataParser.h in Headers */,
 				89D538191CA3551600F62E09 /* QuerySpecifierByProperty.h in Headers */,
+				1F8EDBB72AB8F34A000D81ED /* FBMjpegServer.h in Headers */,
 				843A0C9E26B8DB92001CF302 /* XCTMessagingRole_CapabilityExchange-Protocol.h in Headers */,
 				F5366D9E1DE6CC2900E7C765 /* TextInputFirstResponderProvider.h in Headers */,
 				8479D80526F8D37600F6EFDA /* DTXAllowedRPC-Protocol.h in Headers */,
@@ -4847,6 +4881,7 @@
 				F533496D1F3AFED7004138C7 /* CBXOrientation.m in Sources */,
 				89C5F3701C9E32440093A018 /* DoubleTap.m in Sources */,
 				89D538001CA2090500F62E09 /* QuerySpecifierFactory.m in Sources */,
+				1F1D9EF72AB8793C003C1260 /* XCUIElement+TouchSynthesis.m in Sources */,
 				899696DA1CB45FFC00BB42E2 /* ActionConfiguration.m in Sources */,
 				899696F11CB5880F00BB42E2 /* AutomationAction.m in Sources */,
 				F55F81A81C6DD07500A945C8 /* WebSocket.m in Sources */,
@@ -4906,12 +4941,14 @@
 				899696C51CB3360900BB42E2 /* Pinch.m in Sources */,
 				F55F82531C6DD07500A945C8 /* RouteRequest.m in Sources */,
 				F55F84101C6E437A00A945C8 /* JSONUtils.m in Sources */,
+				1F8EDBB82AB8F34A000D81ED /* FBMjpegServer.m in Sources */,
 				7DEAAE74241FA80D009894BA /* FBXCTestCaseImplementationFailureHoldingProxy.m in Sources */,
 				F5E663211D74958200068CE9 /* SpringBoard.m in Sources */,
 				F5870B431CF0BEFF00B3376C /* TouchPath.m in Sources */,
 				89512BDC1C9EEC3C0027D61E /* Drag.m in Sources */,
 				F55F81A61C6DD07500A945C8 /* HTTPRedirectResponse.m in Sources */,
 				F5CE18E31E8BBA61001116A5 /* CBLSApplicationProxy.m in Sources */,
+				1F1D9EF22AB8764D003C1260 /* FBTCPSocket.m in Sources */,
 				F55F840B1C6E437100A945C8 /* HealthRoutes.m in Sources */,
 				F55F81961C6DD07500A945C8 /* MultipartFormDataParser.m in Sources */,
 				F55B31C61CBE6EEA00DFB13C /* TwoFingerTap.m in Sources */,
@@ -4921,6 +4958,7 @@
 				3B81F695240E952F00825603 /* QuerySpecifierByDescendantType.m in Sources */,
 				89D538161CA351F400F62E09 /* QuerySpecifierByIndex.m in Sources */,
 				89B951A21CF5B297007FD0AB /* QuerySpecifierByType.m in Sources */,
+				1F1D9EF82AB87955003C1260 /* CBXScreenshooter.m in Sources */,
 				F5870B401CF0BEFF00B3376C /* CBXTouchEvent.m in Sources */,
 				F549E1A61D5472B900C4FA36 /* CBXInfoPlist.m in Sources */,
 			);
@@ -5055,6 +5093,7 @@
 				47A3794F272005A800214051 /* Route.m in Sources */,
 				47C26558271F1E78006EF0B9 /* Screenshotter.m in Sources */,
 				47C26561271F2119006EF0B9 /* JSONKeyValidator.m in Sources */,
+				1F8EDBBA2AB8F8CF000D81ED /* CBXScreenshooter.m in Sources */,
 				4740BCCC272002D8003792B6 /* QuerySpecifierByTextLike.m in Sources */,
 				47C26557271F1E78006EF0B9 /* CBXStressTests.m in Sources */,
 			);
@@ -5154,6 +5193,7 @@
 				F5061A9B2153B4EF00B85792 /* GCDAsyncSocket.m in Sources */,
 				F5061A3C2153B0FF00B85792 /* CBXTestToolsStandup.m in Sources */,
 				F5061AAA2153B4EF00B85792 /* HTTPResponseProxy.m in Sources */,
+				1F8EDBB92AB8F8CE000D81ED /* CBXScreenshooter.m in Sources */,
 				F5061AA82153B4EF00B85792 /* HTTPRedirectResponse.m in Sources */,
 				F5061A902153B19900B85792 /* GestureFactory.m in Sources */,
 				F5061A3E2153B0FF00B85792 /* ApplicationTest.m in Sources */,
