@@ -75,6 +75,8 @@
 		1F1D9EF72AB8793C003C1260 /* XCUIElement+TouchSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D9EF42AB87875003C1260 /* XCUIElement+TouchSynthesis.m */; };
 		1F1D9EF82AB87955003C1260 /* CBXScreenshooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D9EEC2AB5C261003C1260 /* CBXScreenshooter.m */; };
 		1F1D9EF92AB87966003C1260 /* CBXScreenshooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1D9EEB2AB5C261003C1260 /* CBXScreenshooter.h */; };
+		1F2A5F922ABAD4A5000FD13A /* QuerySpecifierByPredicate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2A5F902ABAD4A4000FD13A /* QuerySpecifierByPredicate.h */; };
+		1F2A5F932ABAD4A5000FD13A /* QuerySpecifierByPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A5F912ABAD4A5000FD13A /* QuerySpecifierByPredicate.m */; };
 		1F8EDBB72AB8F34A000D81ED /* FBMjpegServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8EDBB52AB8F34A000D81ED /* FBMjpegServer.h */; };
 		1F8EDBB82AB8F34A000D81ED /* FBMjpegServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8EDBB62AB8F34A000D81ED /* FBMjpegServer.m */; };
 		1F8EDBB92AB8F8CE000D81ED /* CBXScreenshooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D9EEC2AB5C261003C1260 /* CBXScreenshooter.m */; };
@@ -1582,6 +1584,8 @@
 		1F1D9EEF2AB87643003C1260 /* FBTCPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTCPSocket.m; sourceTree = "<group>"; };
 		1F1D9EF32AB87875003C1260 /* XCUIElement+TouchSynthesis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCUIElement+TouchSynthesis.h"; sourceTree = "<group>"; };
 		1F1D9EF42AB87875003C1260 /* XCUIElement+TouchSynthesis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCUIElement+TouchSynthesis.m"; sourceTree = "<group>"; };
+		1F2A5F902ABAD4A4000FD13A /* QuerySpecifierByPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerySpecifierByPredicate.h; sourceTree = "<group>"; };
+		1F2A5F912ABAD4A5000FD13A /* QuerySpecifierByPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierByPredicate.m; sourceTree = "<group>"; };
 		1F8EDBB52AB8F34A000D81ED /* FBMjpegServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMjpegServer.h; sourceTree = "<group>"; };
 		1F8EDBB62AB8F34A000D81ED /* FBMjpegServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMjpegServer.m; sourceTree = "<group>"; };
 		3B5444E02498216000532AE0 /* QuerySpecifierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierTests.m; sourceTree = "<group>"; };
@@ -3226,6 +3230,8 @@
 		F572874A1D748BAC00C65208 /* Specifiers */ = {
 			isa = PBXGroup;
 			children = (
+				1F2A5F902ABAD4A4000FD13A /* QuerySpecifierByPredicate.h */,
+				1F2A5F912ABAD4A5000FD13A /* QuerySpecifierByPredicate.m */,
 				89D537FD1CA2090500F62E09 /* QuerySpecifierFactory.h */,
 				89D537FE1CA2090500F62E09 /* QuerySpecifierFactory.m */,
 				89D537F51CA1DF8500F62E09 /* QuerySpecifier.h */,
@@ -4121,6 +4127,7 @@
 				89C5F3631C9C58BD0093A018 /* Touch.h in Headers */,
 				F54514111CF624C900A0BB14 /* CBXDevice.h in Headers */,
 				843A0D6C26B8DB92001CF302 /* XCTMemoryChecker.h in Headers */,
+				1F2A5F922ABAD4A5000FD13A /* QuerySpecifierByPredicate.h in Headers */,
 				DD6297CC2A22BF3600E36189 /* NSPredicateVisitor-Protocol.h in Headers */,
 				843A0BB826B8DB91001CF302 /* XCTMetricInstrumentalAdapter.h in Headers */,
 				843A0BAA26B8DB91001CF302 /* XCTAggregateSuiteRunStatistics.h in Headers */,
@@ -4940,6 +4947,7 @@
 				F55F81811C6DD07500A945C8 /* GCDAsyncSocket.m in Sources */,
 				899696C51CB3360900BB42E2 /* Pinch.m in Sources */,
 				F55F82531C6DD07500A945C8 /* RouteRequest.m in Sources */,
+				1F2A5F932ABAD4A5000FD13A /* QuerySpecifierByPredicate.m in Sources */,
 				F55F84101C6E437A00A945C8 /* JSONUtils.m in Sources */,
 				1F8EDBB82AB8F34A000D81ED /* FBMjpegServer.m in Sources */,
 				7DEAAE74241FA80D009894BA /* FBXCTestCaseImplementationFailureHoldingProxy.m in Sources */,
