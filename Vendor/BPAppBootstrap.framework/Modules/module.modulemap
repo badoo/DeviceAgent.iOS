@@ -1,0 +1,6 @@
+framework module BPAppBootstrap {
+  umbrella header "BPAppBootstrap.h"
+  export *
+
+  module * { export * }
+}
