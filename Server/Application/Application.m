@@ -181,35 +181,35 @@ static Application *currentApplication;
     return [iOSVersion compare:fourteen] != NSOrderedAscending;
 }
 
-+ (NSDictionary *)launchEnvironmentWithEnvArg:(NSDictionary *)environmentArg {
-    static NSString *bootstrapDylib = @"/Developer/usr/lib/libXCTTargetBootstrapInject.dylib";
-    static NSString *key = @"DYLD_INSERT_LIBRARIES";
+static NSString *BPAPPBOOTSTRAP = @"PlugIns/DeviceAgent.xctest/Frameworks/BPAppBootstrap.framework/BPAppBootstrap";
+static NSString *DYLD_INSERT_LIBRARIES_KEY = @"DYLD_INSERT_LIBRARIES";
 
-    if ([Application iOSVersionGTE14]) {
-        return environmentArg ?: @{}; // /Developer/usr/lib/libXCTTargetBootstrapInject.dylib does not exist for iOS 14.0
-    } else if ([Application iOSVersionGTE103]) {
-        if (!environmentArg || environmentArg.count == 0) {
-            return @{key : bootstrapDylib};
-        } else {
-            if (!environmentArg[key]) {
-                NSMutableDictionary *mutable;
-                mutable = [NSMutableDictionary dictionaryWithDictionary:environmentArg];
-                mutable[key] = bootstrapDylib;
-                return [NSDictionary dictionaryWithDictionary:mutable];
-            } else {
-                NSString *value = environmentArg[key];
-                if ([value containsString:bootstrapDylib]) {
-                    return environmentArg;
-                } else {
-                    NSMutableDictionary *mutable;
-                    mutable = [NSMutableDictionary dictionaryWithDictionary:environmentArg];
-                    mutable[key] = [value stringByAppendingFormat:@":%@", bootstrapDylib];
-                    return [NSDictionary dictionaryWithDictionary:mutable];
-                }
-            }
-        }
++ (NSDictionary *)launchEnvironmentWithEnvArg:(NSDictionary *)environmentArg {
+    NSURL *currentProcessPath = [NSURL fileURLWithPath:NSProcessInfo.processInfo.arguments[0]];
+    NSURL *currentProcessDirectory = [currentProcessPath URLByDeletingLastPathComponent];
+    NSString *bootstrapDylibPath = [[currentProcessDirectory URLByAppendingPathComponent:BPAPPBOOTSTRAP] path];
+
+    if (!environmentArg || environmentArg.count == 0) {
+        return @{};
     } else {
-        return environmentArg ?: @{};
+        NSString *clearFileSystem = environmentArg[@"CLEAR_FILE_SYSTEM"];
+
+        if (clearFileSystem != nil && [clearFileSystem isEqualToString:@"YES"]) {
+            if (!environmentArg[DYLD_INSERT_LIBRARIES_KEY]) {
+                NSMutableDictionary *modifiedEnvironment;
+                modifiedEnvironment = [NSMutableDictionary dictionaryWithDictionary:environmentArg];
+                modifiedEnvironment[DYLD_INSERT_LIBRARIES_KEY] = bootstrapDylibPath;
+                return [NSDictionary dictionaryWithDictionary:modifiedEnvironment];
+            } else {
+                NSString *value = environmentArg[DYLD_INSERT_LIBRARIES_KEY];
+                NSMutableDictionary *modifiedEnvironment;
+                modifiedEnvironment = [NSMutableDictionary dictionaryWithDictionary:environmentArg];
+                modifiedEnvironment[DYLD_INSERT_LIBRARIES_KEY] = [value stringByAppendingFormat:@":%@", bootstrapDylibPath];
+                return [NSDictionary dictionaryWithDictionary:modifiedEnvironment];
+            }
+        } else {
+            return environmentArg;
+        }
     }
 }
 
