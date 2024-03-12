@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+echo "Starting script bin/xcode-scheme-post-build-action/stage-DeviceAgent-binaries-to-Products.sh"
+set -x
 # Stages DeviceAgent-Runner.app built by Xcode to ./Products/
 # Called from DeviceAgent scheme Build Post Action
 
