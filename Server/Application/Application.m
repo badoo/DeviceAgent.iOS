@@ -225,8 +225,13 @@ static NSString *DYLD_INSERT_LIBRARIES_KEY = @"DYLD_INSERT_LIBRARIES";
         [Application terminateApplication:application];
     }
 
-    application.launchArguments = launchArgs ?: @[];
-    application.launchEnvironment = [Application launchEnvironmentWithEnvArg:environment];
+    NSArray * _Null_unspecified launchArguments = launchArgs ?: @[];
+    NSDictionary *launchEnvironment = [Application launchEnvironmentWithEnvArg:environment];
+
+    DDLogInfo(@"Launching application '%@' with launchArguments:\n%@\n with launchEnvironment:\n%@\n", bundleId, launchArguments, launchEnvironment);
+
+    application.launchArguments = launchArguments;
+    application.launchEnvironment = launchEnvironment;
     currentApplication.app = application;
     [currentApplication startSession];
 }
