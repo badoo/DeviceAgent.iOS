@@ -4593,19 +4593,19 @@
 				TargetAttributes = {
 					898743BB1C5847B30084FD93 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = FYD86LA7RE;
-						DevelopmentTeamName = "Karl Krukow";
+						DevelopmentTeam = RPLQZXP536;
+						DevelopmentTeamName = "Ilya Ageev";
 						ProvisioningStyle = Manual;
 					};
 					898743D41C5847B30084FD93 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = FYD86LA7RE;
+						DevelopmentTeam = RPLQZXP536;
 						ProvisioningStyle = Manual;
 						TestTargetID = 898743BB1C5847B30084FD93;
 					};
 					F50BB27A1D73392100264915 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = FYD86LA7RE;
+						DevelopmentTeam = RPLQZXP536;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -4621,7 +4621,7 @@
 					};
 					F50BB2921D73392200264915 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = FYD86LA7RE;
+						DevelopmentTeam = RPLQZXP536;
 						ProvisioningStyle = Manual;
 						TestTargetID = F50BB27A1D73392100264915;
 					};
@@ -4637,39 +4637,39 @@
 					};
 					F5954E041CBD2E1200117745 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = FYD86LA7RE;
-						DevelopmentTeamName = "Karl Krukow";
+						DevelopmentTeam = RPLQZXP536;
+						DevelopmentTeamName = "Ilya Ageev";
 					};
 					F5DBC0A42101F18A00A4C274 = {
 						CreatedOnToolsVersion = 9.3.1;
-						DevelopmentTeam = FYD86LA7RE;
+						DevelopmentTeam = RPLQZXP536;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F5954E041CBD2E1200117745;
 					};
 					F5DD368A20036D7200308564 = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = FYD86LA7RE;
+						DevelopmentTeam = RPLQZXP536;
 						ProvisioningStyle = Manual;
 						TestTargetID = 898743BB1C5847B30084FD93;
 					};
 					F5FEA51D201A2AEA00CEF56A = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = FYD86LA7RE;
+						DevelopmentTeam = RPLQZXP536;
 						ProvisioningStyle = Automatic;
 					};
 					F5FEA530201A359500CEF56A = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = FYD86LA7RE;
+						DevelopmentTeam = RPLQZXP536;
 						ProvisioningStyle = Automatic;
 					};
 					F5FEA541201A368600CEF56A = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = FYD86LA7RE;
+						DevelopmentTeam = RPLQZXP536;
 						ProvisioningStyle = Automatic;
 					};
 					F5FEA54F201B1F7D00CEF56A = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = FYD86LA7RE;
+						DevelopmentTeam = RPLQZXP536;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -5547,9 +5547,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppStubIcon;
 				CLANG_ENABLE_MODULES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Karl Krukow (YTTN6Y2QS9)";
+				CODE_SIGN_IDENTITY = "Apple Development: Ilya Ageev (EB7WY9MSG5)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5575,9 +5575,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppStubIcon;
 				CLANG_ENABLE_MODULES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Karl Krukow (YTTN6Y2QS9)";
+				CODE_SIGN_IDENTITY = "Apple Development: Ilya Ageev (EB7WY9MSG5)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5602,10 +5602,12 @@
 			buildSettings = {
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Karl Krukow (YTTN6Y2QS9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Karl Krukow (YTTN6Y2QS9)";
+				CODE_SIGN_IDENTITY = "Apple Development: Ilya Ageev (EB7WY9MSG5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Ilya Ageev (EB7WY9MSG5)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = RPLQZXP536;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/PrivateFrameworks",
@@ -5639,10 +5641,10 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = sh.calaba.DeviceAgent;
+				PRODUCT_BUNDLE_IDENTIFIER = sh.calaba.DeviceAgent.dev;
 				PRODUCT_NAME = DeviceAgent;
-				PROVISIONING_PROFILE = "fb4b8ed8-fb70-4b90-8f51-33e10f8f670e";
 				PROVISIONING_PROFILE_SPECIFIER = DeviceAgent;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development sh.calaba.DeviceAgent.dev";
 				TEST_TARGET_NAME = AppStub;
 			};
 			name = Debug;
@@ -5652,10 +5654,12 @@
 			buildSettings = {
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Karl Krukow (YTTN6Y2QS9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Karl Krukow (YTTN6Y2QS9)";
+				CODE_SIGN_IDENTITY = "Apple Development: Ilya Ageev (EB7WY9MSG5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Ilya Ageev (EB7WY9MSG5)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = RPLQZXP536;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5686,10 +5690,10 @@
 					"@loader_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = sh.calaba.DeviceAgent;
+				PRODUCT_BUNDLE_IDENTIFIER = sh.calaba.DeviceAgent.dev;
 				PRODUCT_NAME = DeviceAgent;
-				PROVISIONING_PROFILE = "fb4b8ed8-fb70-4b90-8f51-33e10f8f670e";
 				PROVISIONING_PROFILE_SPECIFIER = DeviceAgent;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development sh.calaba.DeviceAgent.dev";
 				TEST_TARGET_NAME = AppStub;
 			};
 			name = Release;
@@ -5705,7 +5709,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = Permissions/Permissions.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor",
@@ -5737,7 +5741,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_ENTITLEMENTS = Permissions/Permissions.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor",
@@ -5765,7 +5769,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				INFOPLIST_FILE = Permissions/UITest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5787,7 +5791,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				INFOPLIST_FILE = Permissions/UITest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5921,9 +5925,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = TestAppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Karl Krukow (YTTN6Y2QS9)";
+				CODE_SIGN_IDENTITY = "Apple Development: Ilya Ageev (EB7WY9MSG5)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5967,8 +5971,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = TestAppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Karl Krukow (YTTN6Y2QS9)";
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				CODE_SIGN_IDENTITY = "Apple Development: Ilya Ageev (EB7WY9MSG5)";
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6020,7 +6024,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -6070,7 +6074,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/**",
@@ -6114,7 +6118,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = StandAloneUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6142,7 +6146,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = StandAloneUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6170,7 +6174,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				EXECUTABLE_EXTENSION = dylib;
 				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6193,7 +6197,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				EXECUTABLE_EXTENSION = dylib;
 				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6216,7 +6220,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				EXECUTABLE_EXTENSION = dylib;
 				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6239,7 +6243,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				EXECUTABLE_EXTENSION = dylib;
 				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6262,7 +6266,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				EXECUTABLE_EXTENSION = dylib;
 				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6285,7 +6289,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				EXECUTABLE_EXTENSION = dylib;
 				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6300,7 +6304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -6309,7 +6313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				DEVELOPMENT_TEAM = RPLQZXP536;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

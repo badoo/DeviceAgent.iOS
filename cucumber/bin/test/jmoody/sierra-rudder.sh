@@ -17,7 +17,7 @@ else
   exit 1
 fi
 
-export CODE_SIGN_IDENTITY="iPhone Developer: Karl Krukow (YTTN6Y2QS9)"
+export CODE_SIGN_IDENTITY="Apple Development: Ilya Ageev (EB7WY9MSG5)"
 
 # Quit the TestApp at_exit to ensure the next test launches the app
 # in the correct state. See features/support/01_launch.rb

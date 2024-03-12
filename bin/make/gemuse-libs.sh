@@ -70,7 +70,7 @@ function fat_lib_with_lipo {
     -output "${fat_lib}"
 
   xcrun codesign --verbose --force \
-    --sign "iPhone Developer: Karl Krukow (YTTN6Y2QS9)" \
+    --sign "Apple Development: Ilya Ageev (EB7WY9MSG5)" \
     --keychain "${HOME}/.calabash/Calabash.keychain" "${fat_lib}"
 
   local version=$(xcrun strings "${fat_lib}" | \
