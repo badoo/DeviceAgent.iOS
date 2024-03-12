@@ -5644,7 +5644,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sh.calaba.DeviceAgent.dev;
 				PRODUCT_NAME = DeviceAgent;
 				PROVISIONING_PROFILE_SPECIFIER = DeviceAgent;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development sh.calaba.DeviceAgent.dev";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development sh.calaba.DeviceAgent.dev.xctrunner";
 				TEST_TARGET_NAME = AppStub;
 			};
 			name = Debug;
@@ -5693,7 +5693,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sh.calaba.DeviceAgent.dev;
 				PRODUCT_NAME = DeviceAgent;
 				PROVISIONING_PROFILE_SPECIFIER = DeviceAgent;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development sh.calaba.DeviceAgent.dev";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development sh.calaba.DeviceAgent.dev.xctrunner";
 				TEST_TARGET_NAME = AppStub;
 			};
 			name = Release;
