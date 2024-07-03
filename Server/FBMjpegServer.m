@@ -16,6 +16,8 @@
 #import "Testmanagerd.h"
 #import "XCUIScreen.h"
 #import "CBXScreenshooter.h"
+#import <ImageIO/ImageIO.h>
+#import <UIKit/UIKit.h>
 
 static const NSUInteger MAX_FPS = 60;
 static NSString *const SERVER_NAME = @"WDA MJPEG Server";
@@ -80,7 +82,31 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
   }
 
   @try {
-    [self sendScreenshot:[_screenshooter getScreenshotData]];
+      NSData *screenShotData = [_screenshooter getScreenshotData];
+      CGFloat scalingFactor = 50 / 100.0;
+      CGFloat compressionQuality = 0.8;
+
+      UIImage *image = [UIImage imageWithData:screenShotData];
+      CGSize scaledSize = CGSizeMake(image.size.width * scalingFactor, image.size.height * scalingFactor);
+
+      dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+      __block UIImage *scaledImage = nil;
+      [image prepareThumbnailOfSize:scaledSize completionHandler:^(UIImage * _Nullable thumbnail) {
+        scaledImage = thumbnail;
+        dispatch_semaphore_signal(semaphore);
+      }];
+      dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+      if (nil == scaledImage) {
+          NSLog(@"Screenshot exception: Failed to scale image using prepareThumbnailOfSize");
+      } else {
+        NSData *scaledImageData = UIImageJPEGRepresentation(scaledImage, compressionQuality);
+          if (nil == scaledImageData) {
+            NSLog(@"Screenshot exception: Failed to scale image using UIImageJPEGRepresentation");
+          } else {
+            [self sendScreenshot:scaledImageData];
+          }
+      }
   } @catch (NSException *exception) {
     NSLog(@"Screenshot exception: %@, %@", exception.name, exception.reason);
   }

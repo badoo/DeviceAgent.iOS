@@ -83,7 +83,7 @@
 		1F8EDBBA2AB8F8CF000D81ED /* CBXScreenshooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D9EEC2AB5C261003C1260 /* CBXScreenshooter.m */; };
 		1F8EDBBB2AB8F8D9000D81ED /* CBXScreenshooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1D9EEB2AB5C261003C1260 /* CBXScreenshooter.h */; };
 		1F8EDBBC2AB8F8DA000D81ED /* CBXScreenshooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F1D9EEB2AB5C261003C1260 /* CBXScreenshooter.h */; };
-		1FE0A2E72B9FBCB5006F9C7B /* BPAppBootstrap.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1FE0A2E52B9FBC9D006F9C7B /* BPAppBootstrap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1FE2978E2BA0887300F5E411 /* BPAppBootstrap.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1FE2978C2BA0884800F5E411 /* BPAppBootstrap.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B5444E52498241500532AE0 /* QuerySpecifierByDescendantType.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B81F693240E937F00825603 /* QuerySpecifierByDescendantType.h */; };
 		3B5444EA249838AC00532AE0 /* QuerySpecifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5444E02498216000532AE0 /* QuerySpecifierTests.m */; };
 		3B81F695240E952F00825603 /* QuerySpecifierByDescendantType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81F694240E952F00825603 /* QuerySpecifierByDescendantType.m */; };
@@ -1347,7 +1347,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1FE0A2E72B9FBCB5006F9C7B /* BPAppBootstrap.framework in CopyFiles */,
+				1FE2978E2BA0887300F5E411 /* BPAppBootstrap.xcframework in CopyFiles */,
 				84A10D982679A474004446C7 /* CocoaLumberjack.xcframework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1590,7 +1590,7 @@
 		1F2A5F912ABAD4A5000FD13A /* QuerySpecifierByPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierByPredicate.m; sourceTree = "<group>"; };
 		1F8EDBB52AB8F34A000D81ED /* FBMjpegServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMjpegServer.h; sourceTree = "<group>"; };
 		1F8EDBB62AB8F34A000D81ED /* FBMjpegServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMjpegServer.m; sourceTree = "<group>"; };
-		1FE0A2E52B9FBC9D006F9C7B /* BPAppBootstrap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BPAppBootstrap.framework; sourceTree = "<group>"; };
+		1FE2978C2BA0884800F5E411 /* BPAppBootstrap.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = BPAppBootstrap.xcframework; sourceTree = "<group>"; };
 		3B5444E02498216000532AE0 /* QuerySpecifierTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierTests.m; sourceTree = "<group>"; };
 		3B81F693240E937F00825603 /* QuerySpecifierByDescendantType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuerySpecifierByDescendantType.h; sourceTree = "<group>"; };
 		3B81F694240E952F00825603 /* QuerySpecifierByDescendantType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuerySpecifierByDescendantType.m; sourceTree = "<group>"; };
@@ -2948,7 +2948,7 @@
 		F55F7FEA1C6DD07500A945C8 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				1FE0A2E52B9FBC9D006F9C7B /* BPAppBootstrap.framework */,
+				1FE2978C2BA0884800F5E411 /* BPAppBootstrap.xcframework */,
 				F54063ED1EBB344200C80B4E /* FLWebView */,
 				F55F7FEB1C6DD07500A945C8 /* CocoaAsyncSocket */,
 				F55F7FEF1C6DD07500A945C8 /* CocoaHTTPServer */,
