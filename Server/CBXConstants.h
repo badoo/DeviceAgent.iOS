@@ -12,7 +12,7 @@ static NSUInteger const CBX_DEFAULT_MJPEG_PORT = 27754;
 
 static NSUInteger FBMjpegServerScreenshotQuality = 100;
 static NSUInteger FBMjpegServerFramerate = 5;
-static NSUInteger FBScreenshotQuality = 1;  
+static NSUInteger FBScreenshotQuality = 1;
 static NSUInteger FBMjpegScalingFactor = 50;
 
 static NSString *const CBXWebServerErrorDomain = @"sh.calaba.xcuitest-server";
