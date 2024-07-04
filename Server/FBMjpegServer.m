@@ -22,6 +22,9 @@
 static const NSUInteger MAX_FPS = 60;
 static NSString *const SERVER_NAME = @"WDA MJPEG Server";
 static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
+static const CGFloat COMPRESSION_QUALITY = 0.8;
+static const CGFloat SCREENSHOT_MAX_WIDTH = 450.0;
+static const uint64_t SCREENSHOT_INTERVAL = (uint64_t)(0.2 * NSEC_PER_SEC);
 
 @interface FBMjpegServer()
 
@@ -29,6 +32,8 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
 @property (nonatomic, readonly) NSMutableArray<GCDAsyncSocket *> *listeningClients;
 @property (nonatomic, readonly) mach_timebase_info_data_t timebaseInfo;
 @property (nonatomic, readonly) CBXScreenshooter *screenshooter;
+@property (nonatomic, readonly) CGSize scaledSize;
+
 @end
 
 @implementation FBMjpegServer
@@ -49,9 +54,16 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
                                                         compression:1.0f
                                                      typeIdentifier:@"JPEG" //(__bridge id)kUTTypeJPEG
     ];
+
+    UIImage *image = [UIImage imageWithData:[_screenshooter getScreenshotData]];
+    CGFloat screenWidth = image.size.width;
+    CGFloat screenHeight = image.size.height;
+    CGFloat scalingFactor = (screenWidth > SCREENSHOT_MAX_WIDTH) ? SCREENSHOT_MAX_WIDTH / screenWidth : 1.0;
+    _scaledSize = CGSizeMake(screenWidth * scalingFactor, screenHeight * scalingFactor);
   }
   return self;
 }
+
 
 - (void)scheduleNextScreenshotWithInterval:(uint64_t)timerInterval timeStarted:(uint64_t)timeStarted
 {
@@ -71,27 +83,19 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
 
 - (void)streamScreenshot
 {
-  NSUInteger framerate = FBMjpegServerFramerate;
-  uint64_t timerInterval = (uint64_t)(1.0 / ((0 == framerate || framerate > MAX_FPS) ? MAX_FPS : framerate) * NSEC_PER_SEC);
   uint64_t timeStarted = mach_absolute_time();
   @synchronized (self.listeningClients) {
     if (0 == self.listeningClients.count) {
-      [self scheduleNextScreenshotWithInterval:timerInterval timeStarted:timeStarted];
+      [self scheduleNextScreenshotWithInterval:SCREENSHOT_INTERVAL timeStarted:timeStarted];
       return;
     }
   }
 
   @try {
-      NSData *screenShotData = [_screenshooter getScreenshotData];
-      CGFloat scalingFactor = 50 / 100.0;
-      CGFloat compressionQuality = 0.8;
-
-      UIImage *image = [UIImage imageWithData:screenShotData];
-      CGSize scaledSize = CGSizeMake(image.size.width * scalingFactor, image.size.height * scalingFactor);
-
+      UIImage *image = [UIImage imageWithData:[_screenshooter getScreenshotData]];
       dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
       __block UIImage *scaledImage = nil;
-      [image prepareThumbnailOfSize:scaledSize completionHandler:^(UIImage * _Nullable thumbnail) {
+      [image prepareThumbnailOfSize:self.scaledSize completionHandler:^(UIImage * _Nullable thumbnail) {
         scaledImage = thumbnail;
         dispatch_semaphore_signal(semaphore);
       }];
@@ -100,7 +104,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
       if (nil == scaledImage) {
           NSLog(@"Screenshot exception: Failed to scale image using prepareThumbnailOfSize");
       } else {
-        NSData *scaledImageData = UIImageJPEGRepresentation(scaledImage, compressionQuality);
+        NSData *scaledImageData = UIImageJPEGRepresentation(scaledImage, COMPRESSION_QUALITY);
           if (nil == scaledImageData) {
             NSLog(@"Screenshot exception: Failed to scale image using UIImageJPEGRepresentation");
           } else {
@@ -111,7 +115,7 @@ static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
     NSLog(@"Screenshot exception: %@, %@", exception.name, exception.reason);
   }
 
-  [self scheduleNextScreenshotWithInterval:timerInterval timeStarted:timeStarted];
+  [self scheduleNextScreenshotWithInterval:SCREENSHOT_INTERVAL timeStarted:timeStarted];
 }
 
 - (void)sendScreenshot:(NSData *)screenshotData {
