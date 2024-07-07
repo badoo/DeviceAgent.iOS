@@ -24,7 +24,7 @@ static NSString *const SERVER_NAME = @"WDA MJPEG Server";
 static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
 static const double COMPRESSION_QUALITY = 0.6;
 static const CGFloat SCREENSHOT_MAX_WIDTH = 400.0;
-static const uint64_t SCREENSHOT_INTERVAL = (uint64_t)(0.125 * NSEC_PER_SEC);
+static const uint64_t SCREENSHOT_INTERVAL = (uint64_t)(0.2 * NSEC_PER_SEC);
 
 @interface FBMjpegServer()
 
