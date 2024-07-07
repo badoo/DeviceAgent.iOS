@@ -15,7 +15,6 @@
 @property (nonatomic, readonly) Class testmanagerdСlass;
 @property (nonatomic, readonly) SEL screenshotSelector;
 @property (nonatomic, readonly) NSMethodSignature *screenshotMethodSignature;
-@property (nonatomic, readonly) BOOL shouldUseScreenshotRequest;
 @property (nonatomic, readonly) XCTScreenshotRequest *screenshotRequest;
 @property (nonatomic, readonly) NSInteger displayID;
 @property (nonatomic, readonly) CGFloat compression;
@@ -27,7 +26,7 @@
 
 - (instancetype)initWithTestmanagerd:(id<XCTMessagingRole_CapabilityExchange>)testmanagerd
                            displayID:(NSInteger)displayID
-                         compression:(CGFloat)compression
+                         compression:(double)compression
                       typeIdentifier:(NSString*)typeIdentifier
 {
   if ((self = [super init])){
@@ -37,74 +36,42 @@
     _typeIdentifier = typeIdentifier;
     _testmanagerdСlass = [((NSObject *)_testmanagerd) class];
 
-    if (@available(iOS 15.0, *)) {
-      _shouldUseScreenshotRequest = YES;
-    } else {
-      _shouldUseScreenshotRequest = NO;
-    }
-
-    if (_shouldUseScreenshotRequest) {
-      _screenshotRequest = [self createScreenshotRequest:[self creatImageEncodingWithCompression:compression typeIdentifier:typeIdentifier]];
-      _screenshotSelector = NSSelectorFromString(@"_XCT_requestScreenshot:withReply:");
-      _screenshotMethodSignature = [_testmanagerdСlass instanceMethodSignatureForSelector:_screenshotSelector];
-    } else {
-      _screenshotRequest = nil;
-      _screenshotSelector = NSSelectorFromString(@"_XCT_requestScreenshotOfScreenWithID:withRect:uti:compressionQuality:withReply:");
-      _screenshotMethodSignature = [_testmanagerdСlass instanceMethodSignatureForSelector:_screenshotSelector];
-    }
+    _screenshotRequest = [self createScreenshotRequest:[self creatImageEncodingWithCompression:compression typeIdentifier:typeIdentifier]];
+    _screenshotSelector = NSSelectorFromString(@"_XCT_requestScreenshot:withReply:");
+    _screenshotMethodSignature = [_testmanagerdСlass instanceMethodSignatureForSelector:_screenshotSelector];
   }
 
   return self;
 }
 
-- (NSData *)getScreenshotData
+- (XCTImage *)getScreenshot
 {
-  __block NSData *screenshotData = nil;
-  dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+    __block XCTImage *screenshot = nil;
 
-  if (_shouldUseScreenshotRequest) {
-      void (^callBack)(XCTImage *, NSError *) = ^(XCTImage *image, NSError *error){
-          if (error != nil) {
-              NSLog(@"Cannot take screenshot. Error: %@", [error description]);
-          }
+    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+    void (^callBack)(XCTImage *, NSError *) = ^(XCTImage *image, NSError *error){
+      if (error != nil) {
+        NSLog(@"Cannot take screenshot. Error: %@", [error description]);
+      } else {
+        screenshot = image;
+      }
+      dispatch_semaphore_signal(sem);
+    };
 
-          screenshotData = [image data];
-          dispatch_semaphore_signal(sem);
-      };
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:_screenshotMethodSignature];
+    invocation.target = _testmanagerd;
+    invocation.selector = _screenshotSelector;
+    [invocation setArgument:&_screenshotRequest atIndex:2];
+    [invocation setArgument:&callBack atIndex:3];
+    [invocation invoke];
 
-      NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:_screenshotMethodSignature];
-      invocation.target = _testmanagerd;
-      invocation.selector = _screenshotSelector;
-      [invocation setArgument:&_screenshotRequest atIndex:2];
-      [invocation setArgument:&callBack atIndex:3];
-      [invocation invoke];
-  } else {
-      void (^callBack)(NSData *, NSError *) = ^(NSData *data, NSError *error) {
-          if (error != nil) {
-            NSLog(@"Cannot take screenshot. Error: %@", [error description]);
-          }
-          screenshotData = data;
-          dispatch_semaphore_signal(sem);
-      };
+    dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)));
 
-      NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:_screenshotMethodSignature];
-      invocation.target = _testmanagerd;
-      invocation.selector = _screenshotSelector;
-      [invocation setArgument:&_displayID atIndex:2];
-      [invocation setArgument:&CGRectNull atIndex:3];
-      [invocation setArgument:&_typeIdentifier atIndex:4];
-      [invocation setArgument:&_compression atIndex:5];
-      [invocation setArgument:&callBack atIndex:6];
-      [invocation invoke];
-  }
+    if (nil == screenshot) {
+      NSLog(@"Cannot take screenshot. ScreenshotData is nil.");
+    }
 
-  dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)));
-
-  if (nil == screenshotData) {
-    NSLog(@"Cannot take screenshot. ScreenshotData is nil.");
-  }
-
-  return screenshotData;
+  return screenshot;
 }
 
 - (XCTScreenshotRequest *)createScreenshotRequest:(XCTImageEncoding *)imageEncoding {
@@ -126,7 +93,7 @@
     return request;
 }
 
-- (XCTImageEncoding *)creatImageEncodingWithCompression:(CGFloat)compression
+- (XCTImageEncoding *)creatImageEncodingWithCompression:(double)compression
                                          typeIdentifier:(NSString*)typeIdentifier {
     Class class = NSClassFromString(@"XCTImageEncoding");
     id instance = [class alloc];

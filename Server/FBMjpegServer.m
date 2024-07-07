@@ -18,13 +18,13 @@
 #import "CBXScreenshooter.h"
 #import <ImageIO/ImageIO.h>
 #import <UIKit/UIKit.h>
+#import "XCTImage.h"
 
-static const NSUInteger MAX_FPS = 60;
 static NSString *const SERVER_NAME = @"WDA MJPEG Server";
 static const char *QUEUE_NAME = "JPEG Screenshots Provider Queue";
-static const CGFloat COMPRESSION_QUALITY = 0.8;
-static const CGFloat SCREENSHOT_MAX_WIDTH = 450.0;
-static const uint64_t SCREENSHOT_INTERVAL = (uint64_t)(0.2 * NSEC_PER_SEC);
+static const double COMPRESSION_QUALITY = 0.6;
+static const CGFloat SCREENSHOT_MAX_WIDTH = 400.0;
+static const uint64_t SCREENSHOT_INTERVAL = (uint64_t)(0.125 * NSEC_PER_SEC);
 
 @interface FBMjpegServer()
 
@@ -33,6 +33,7 @@ static const uint64_t SCREENSHOT_INTERVAL = (uint64_t)(0.2 * NSEC_PER_SEC);
 @property (nonatomic, readonly) mach_timebase_info_data_t timebaseInfo;
 @property (nonatomic, readonly) CBXScreenshooter *screenshooter;
 @property (nonatomic, readonly) CGSize scaledSize;
+@property (nonatomic, readonly) CGFloat scalingFactor;
 
 @end
 
@@ -51,15 +52,15 @@ static const uint64_t SCREENSHOT_INTERVAL = (uint64_t)(0.2 * NSEC_PER_SEC);
 
     _screenshooter = [[CBXScreenshooter alloc] initWithTestmanagerd:[Testmanagerd_CapabilityExchange get]
                                                           displayID:[[XCUIScreen mainScreen] displayID]
-                                                        compression:1.0f
-                                                     typeIdentifier:@"JPEG" //(__bridge id)kUTTypeJPEG
+                                                        compression:COMPRESSION_QUALITY
+                                                     typeIdentifier:@"JPEG"
     ];
 
-    UIImage *image = [UIImage imageWithData:[_screenshooter getScreenshotData]];
+    UIImage *image = [[_screenshooter getScreenshot] platformImage];
     CGFloat screenWidth = image.size.width;
     CGFloat screenHeight = image.size.height;
-    CGFloat scalingFactor = (screenWidth > SCREENSHOT_MAX_WIDTH) ? SCREENSHOT_MAX_WIDTH / screenWidth : 1.0;
-    _scaledSize = CGSizeMake(screenWidth * scalingFactor, screenHeight * scalingFactor);
+    _scalingFactor = (screenWidth > SCREENSHOT_MAX_WIDTH) ? SCREENSHOT_MAX_WIDTH / screenWidth : 1.0;
+    _scaledSize = CGSizeMake(screenWidth * _scalingFactor, screenHeight * _scalingFactor);
   }
   return self;
 }
@@ -81,18 +82,8 @@ static const uint64_t SCREENSHOT_INTERVAL = (uint64_t)(0.2 * NSEC_PER_SEC);
   }
 }
 
-- (void)streamScreenshot
+- (NSData *)scaleImage:(UIImage *)image
 {
-  uint64_t timeStarted = mach_absolute_time();
-  @synchronized (self.listeningClients) {
-    if (0 == self.listeningClients.count) {
-      [self scheduleNextScreenshotWithInterval:SCREENSHOT_INTERVAL timeStarted:timeStarted];
-      return;
-    }
-  }
-
-  @try {
-      UIImage *image = [UIImage imageWithData:[_screenshooter getScreenshotData]];
       dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
       __block UIImage *scaledImage = nil;
       [image prepareThumbnailOfSize:self.scaledSize completionHandler:^(UIImage * _Nullable thumbnail) {
@@ -108,9 +99,43 @@ static const uint64_t SCREENSHOT_INTERVAL = (uint64_t)(0.2 * NSEC_PER_SEC);
           if (nil == scaledImageData) {
             NSLog(@"Screenshot exception: Failed to scale image using UIImageJPEGRepresentation");
           } else {
-            [self sendScreenshot:scaledImageData];
+            return scaledImageData;
           }
       }
+    return nil;
+}
+
+- (void)streamScreenshot
+{
+  uint64_t timeStarted = mach_absolute_time();
+  @synchronized (self.listeningClients) {
+    if (0 == self.listeningClients.count) {
+      [self scheduleNextScreenshotWithInterval:SCREENSHOT_INTERVAL timeStarted:timeStarted];
+      return;
+    }
+  }
+
+  @try {
+#if TARGET_OS_SIMULATOR
+      [self sendScreenshot:[[self.screenshooter getScreenshot] data]];
+#else
+      [self sendScreenshot:[[self.screenshooter getScreenshot] data]];
+
+// Scaling temporarily disabled for tests
+//      XCTImage *xctImage = [self.screenshooter getScreenshot];
+//      NSData *scaledImage = nil;
+//      if ([self scalingFactor] < 1.0) {
+//          scaledImage = [self scaleImage:[xctImage platformImage]];
+//      } else {
+//          scaledImage = UIImageJPEGRepresentation([xctImage platformImage], COMPRESSION_QUALITY);
+//      }
+//      if (nil == scaledImage) {
+//          NSLog(@"Screenshot exception: Failed to scale image using prepareThumbnailOfSize");
+//      } else {
+//          [self sendScreenshot:scaledImage];
+//      }
+#endif
+
   } @catch (NSException *exception) {
     NSLog(@"Screenshot exception: %@, %@", exception.name, exception.reason);
   }
@@ -123,6 +148,7 @@ static const uint64_t SCREENSHOT_INTERVAL = (uint64_t)(0.2 * NSEC_PER_SEC);
   NSMutableData *chunk = [[chunkHeader dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
   [chunk appendData:screenshotData];
   [chunk appendData:(id)[@"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+
   @synchronized (self.listeningClients) {
     for (GCDAsyncSocket *client in self.listeningClients) {
       [client writeData:chunk withTimeout:-1 tag:0];

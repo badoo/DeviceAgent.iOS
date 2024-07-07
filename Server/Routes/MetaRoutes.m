@@ -47,7 +47,7 @@ static CBXScreenshooter *screenshooter = nil;
 
         screenshooter = [[CBXScreenshooter alloc] initWithTestmanagerd:[Testmanagerd_CapabilityExchange get]
                                                               displayID:[[XCUIScreen mainScreen] displayID]
-                                                            compression:1.0f
+                                                            compression:0.8f
                                                          typeIdentifier:@"PNG" //(__bridge id)kUTTypePNG
         ];
     });
@@ -238,8 +238,7 @@ static CBXScreenshooter *screenshooter = nil;
                  withBlock:^(RouteRequest *request,
                              NSDictionary *body,
                              RouteResponse *response) {
-
-                 NSData *screenshotData = [screenshooter getScreenshotData];
+                 NSData *screenshotData = [[screenshooter getScreenshot] data];
 
                  if (nil == screenshotData) {
                    [response respondWithJSON:@{@"value": @"Cannot take screenshot from the device"}];

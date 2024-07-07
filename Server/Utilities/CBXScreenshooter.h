@@ -2,15 +2,16 @@
 // Licensed under the MIT license.
 
 #import "CBX-XCTest-Umbrella.h"
+#import "XCTImage.h"
 
 @protocol XCTMessagingRole_CapabilityExchange;
 
 @interface CBXScreenshooter : NSObject
 - (instancetype)initWithTestmanagerd:(id<XCTMessagingRole_CapabilityExchange>)testmanagerd
                            displayID:(NSInteger)displayID
-                         compression:(CGFloat)compression
+                         compression:(double)compression
                       typeIdentifier:(NSString*)typeIdentifier;
 
-- (NSData *)getScreenshotData;
+- (XCTImage *)getScreenshot;
 
 @end
