@@ -13,6 +13,8 @@
 #import "CBXMachClock.h"
 #import "XCAccessibilityElement.h"
 #import "XCAXClient_iOS.h"
+#import "QuerySpecifierByPredicate.h"
+#import "QuerySpecifier.h"
 
 @interface Application ()
 @property (nonatomic, strong) XCUIApplication *app;
@@ -99,7 +101,13 @@ static Application *currentApplication;
 
 + (XCUIApplication *)findCurrentApplication
 {
-    return [[[self findCurrentApplications] allObjects] firstObject];
+    XCUIApplication *application = [[[self findCurrentApplications] allObjects] firstObject];
+    if (application != nil) {
+        DDLogDebug(@"[findCurrentApplication] Got application: %@", [application bundleID] );
+    } else {
+        DDLogDebug(@"[findCurrentApplication] Got application: nil");
+    }
+    return application;
 }
 
 + (NSSet<XCUIApplication *> *)findCurrentApplications
@@ -249,6 +257,25 @@ static NSString *DYLD_INSERT_LIBRARIES_KEY = @"DYLD_INSERT_LIBRARIES";
     XCUIElementQuery *applicationQuery = [XCUIApplication cbxQuery:application];
     XCElementSnapshot *applicationSnaphot = [applicationQuery cbx_elementSnapshotForDebugDescription];
     return [Application snapshotTree:applicationSnaphot];
+}
+
++ (NSArray *)subtreesForQuery:(NSString *_Nullable)predicateString {
+    DDLogDebug(@"Calling treeForPredicate with predicateString: %@", predicateString);
+    XCUIApplication *application = [Application findCurrentApplication];
+    XCUIElementQuery *applicationQuery = [application descendantsMatchingType:0];
+    QuerySpecifierByPredicate *predicateQuery = [QuerySpecifierByPredicate new];
+    predicateQuery.value = predicateString;
+    XCUIElementQuery *filteredElementsQuery = [predicateQuery applyInternal:applicationQuery];
+    NSArray<XCUIElement *> *filteredElements = [filteredElementsQuery allElementsBoundByIndex];
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:filteredElements.count];
+
+    for (XCUIElement *filteredElement in filteredElements) {
+        XCElementSnapshot *elementSnapshot = [filteredElement.query cbx_elementSnapshotForDebugDescription];
+        NSDictionary *elementTree = [Application snapshotTree:elementSnapshot];
+        [result addObject:elementTree];
+    }
+
+    return result;
 }
 
 + (NSDictionary *)tree:(NSString *_Nullable)bundleId {

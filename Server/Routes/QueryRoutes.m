@@ -73,6 +73,18 @@ static NSArray *axAttributes;
           [response respondWithJSON:[Application tree_current]];
       }],
 
+      [CBXRoute post:endpoint(@"/subtreesForQuery", 1.0) withBlock:^(RouteRequest *request,
+                                                        NSDictionary *body,
+                                                        RouteResponse *response) {
+          [[SpringBoard application] handleAlertsOrThrow];
+          NSString *predicateString = body[@"predicate_string"];
+          if (predicateString == nil){
+              [response respondWithJSON:@{@"error" : @"predicate_string is not set. Use 'predicate_string' for query"}];
+          } else {
+              [response respondWithJSON:@{@"result" : [Application subtreesForQuery:predicateString]}];
+          }
+      }],
+
       [CBXRoute get:endpoint(@"/tree_app", 1.0) withBlock:^(RouteRequest *request,
                                                         NSDictionary *data,
                                                         RouteResponse *response) {

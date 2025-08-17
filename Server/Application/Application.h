@@ -61,5 +61,6 @@
  */
 + (NSDictionary *_Nonnull)tree;
 + (NSDictionary *_Nonnull)tree_current;
++ (NSArray *_Nonnull)subtreesForQuery:(NSString *_Nullable)predicateString;
 + (NSDictionary *_Nonnull)tree:(NSString *_Nullable)bundleId;
 @end
